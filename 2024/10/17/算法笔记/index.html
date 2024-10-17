@@ -11,7 +11,7 @@
   <meta charset="utf-8">
 
   
-  <title>算法笔记</title>
+  <title>算法每日一题</title>
   
   <link rel="canonical" href="http://example.com/2024/10/17/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
   
@@ -26,14 +26,14 @@
   
   <meta property="og:site_name" content="哥们废了" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="算法笔记" />
+  <meta property="og:title" content="算法每日一题" />
   
   <meta property="og:description" content="Tarjan算法（寻找强连通分量）  铺垫：连通图的两种DFS遍历方式， 在tarjan算法中采用方式2来遍历顶点  顶点X（i,j）其中 i：DFS中x点被访问的时间点 j: x通过可以回溯到的最早时间点   1129 颜色交替的最短路径给定一个整数 n，即有向图中的节点数，其中节点标记为 0 到">
   
   <meta property="og:url" content="http://example.com/2024/10/17/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="算法笔记">
+  <meta name="twitter:title" content="算法每日一题">
   
   <meta name="twitter:description" content="Tarjan算法（寻找强连通分量）  铺垫：连通图的两种DFS遍历方式， 在tarjan算法中采用方式2来遍历顶点  顶点X（i,j）其中 i：DFS中x点被访问的时间点 j: x通过可以回溯到的最早时间点   1129 颜色交替的最短路径给定一个整数 n，即有向图中的节点数，其中节点标记为 0 到">
   
@@ -189,7 +189,7 @@
 </div>
 
         <div class="trans">
-            <h2>算法笔记</h2>
+            <h2>算法每日一题</h2>
 
   <h2 id="Tarjan算法（寻找强连通分量）"><a href="#Tarjan算法（寻找强连通分量）" class="headerlink" title="Tarjan算法（寻找强连通分量）"></a>Tarjan算法（寻找强连通分量）</h2><p>  铺垫：连通图的两种DFS遍历方式， 在tarjan算法中采用方式2来遍历顶点<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20240911155905523.png" alt="image-20240911155905523"></p>
 <p> 顶点X（i,j）其中</p>
@@ -275,6 +275,26 @@
 <li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int pre = 0, maxAns = nums[0];</span><br><span class="line">        for (const auto &amp;x: nums) &#123;</span><br><span class="line">            pre = max(pre + x, x);</span><br><span class="line">            maxAns = max(maxAns, pre);</span><br><span class="line">        &#125;</span><br><span class="line">        return maxAns;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>代码</p>
+<p>测试用例</p>
+<p>测试结果</p>
+<p>测试结果</p>
+<h3 id="56-合并区间"><a href="#56-合并区间" class="headerlink" title="56.合并区间"></a>56.合并区间</h3><p>以数组 <code>intervals</code> 表示若干个区间的集合，其中单个区间为 <code>intervals[i] = [starti, endi]</code> 。请你合并所有重叠的区间，并返回 <em>一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间</em> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：intervals = [[1,3],[2,6],[8,10],[15,18]]</span><br><span class="line">输出：[[1,6],[8,10],[15,18]]</span><br><span class="line">解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：intervals = [[1,4],[4,5]]</span><br><span class="line">输出：[[1,5]]</span><br><span class="line">解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。</span><br></pre></td></tr></table></figure>
+
+<p> 思路：先对vector进行排序，再根据题意插入</p>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= intervals.length &lt;= 104</code></li>
+<li><code>intervals[i].length == 2</code></li>
+<li><code>0 &lt;= starti &lt;= endi &lt;= 104</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">merge</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals) &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.<span class="built_in">size</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; merged;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="type">int</span> L = intervals[i][<span class="number">0</span>], R = intervals[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (!merged.<span class="built_in">size</span>() || merged.<span class="built_in">back</span>()[<span class="number">1</span>] &lt; L) &#123;</span><br><span class="line">                merged.<span class="built_in">push_back</span>(&#123;L, R&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                merged.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(merged.<span class="built_in">back</span>()[<span class="number">1</span>], R);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> merged;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
   <p><a class="classtest-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a> — 2024年10月17日</p>
