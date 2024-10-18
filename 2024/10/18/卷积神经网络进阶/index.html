@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>算法 | 哥们废了</title>
+  <title>卷积神经网络进阶 | 哥们废了</title>
   <meta name="author" content="Simon An">
   
   <meta name="description" content="记录在NJUST学习和生活历程">
@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="卷积神经网络进阶"/>
   <meta property="og:site_name" content="哥们废了"/>
 
   
@@ -92,108 +92,111 @@
   	<div class="content">
     	 
 
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title-tag"><i class="fa fa-archive"></i> 算法</h1>
-</div>
 
-<div class="row page">
-  <!-- cols -->
-  
-  <div class="col-md-9">
 	
-
-	  <div id="top_search"></div>
-
-	  <div class="archive">
-		
-		
-		
-			
-			
-			<h4 class="archive-ul" data-toggle="collapse" data-target="#2024">2024<b class="caret"></b></h4>
-			<ul id="2024" class="collapse in">
-			
-		
-		<li class="listing-item">
-		<span class="date_class"> 2024-10-17 </span> &raquo;
-		
-		   <span class="title"><a href="/2024/10/17/算法笔记/" >算法每日一题</a></span>
-		
-		</li>			
-		
-		</ul>
+		<div class="page-header">
+			<h1> 卷积神经网络进阶</h1>
 		</div>
-
-</div> <!-- col-md-9/col-md-12 -->
-
-
-<div class="col-md-3">
-	<div id="sidebar">
 	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
 
 
-		
-			
-		
-			
-	<div class="widget">
-		<h4>标签云</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/算法/">算法<span>1</span></a></li>
-		
-			<li><a href="/tags/神经网络/">神经网络<span>1</span></a></li>
-		
-		 
-		</ul>
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补</p>
+<h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018145146213.png" alt="image-20241018145146213"></p>
+<h2 id="Inception-Module"><a href="#Inception-Module" class="headerlink" title="Inception Module"></a>Inception Module</h2><img src="C:\Users\alj\AppData\Roaming\Typora\typora-user-images\image-20241018144916751.png" alt="image-20241018144916751" style="zoom:33%;" />
+
+<p>上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception</p>
+<p>Concatenate将每一路径得到的张量拼接成一个张量,<strong>在进行Average Pooling池化时，可以进行相应的padding和stride来保证张量的w和h不会改变</strong></p>
+<p><strong>1*1卷积核的作用是什么？</strong></p>
+<p>在1*1卷积核中，我们可以对不同通道的相同位置的像素值进行计算并加和，有此将CxWxH的张量转化为1xWxH的张量，实现降通道操作，具体图示如下：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018150809527.png" alt="image-20241018150809527" style="zoom: 25%;" />
+
+<p><strong>为什么需要1*1的卷积核？</strong></p>
+	  
 	</div>
 
+	<div>
+  	<center>
+	<div class="pagination">
 
-		
-			
-<div class="widget">
-  <h4>最新文章</h4>
-  <ul class="entry list-unstyled">
     
-      <li>
-        <a href="/2024/10/18/卷积神经网络进阶/" ><i class="fa fa-file-o"></i>卷积神经网络进阶</a>
-      </li>
     
-      <li>
-        <a href="/2024/10/17/算法笔记/" ><i class="fa fa-file-o"></i>算法每日一题</a>
-      </li>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
     
-      <li>
-        <a href="/2024/10/17/hello-world/" ><i class="fa fa-file-o"></i>Hello World</a>
-      </li>
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-  </ul>
+    <a href="/2024/10/17/算法笔记/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
 </div>
 
-		
-			
-<div class="widget">
-	<h4>链接</h4>
-	<ul class="blogroll list-unstyled">
+    </center>
+	</div>
 	
-		<li><i class="fa fa-github"></i><a href="http://www.github.com/lovelysimon" title="My Github account." target="_blank">My Github</a></li>
+	<!-- comment -->
 	
-	</ul>
-</div>
+<section id="comment">
+    <h2 class="title">留言</h2>
+
+    
+</section>
 
 
+	</div> <!-- col-md-9/col-md-12 -->
 		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
 
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-10-18 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/神经网络/">神经网络<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
 
 
 
