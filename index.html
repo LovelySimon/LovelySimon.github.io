@@ -139,13 +139,17 @@
 <h2 id="Inception-Module"><a href="#Inception-Module" class="headerlink" title="Inception Module"></a>Inception Module</h2><img src="C:\Users\alj\AppData\Roaming\Typora\typora-user-images\image-20241018144916751.png" alt="image-20241018144916751" style="zoom:33%;" />
 
 <p>上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception</p>
-<p>Concatenate将每一路径得到的张量拼接成一个张量,<strong>在进行Average Pooling池化时，可以进行相应的padding和stride来保证张量的w和h不会改变</strong></p>
-<p><strong>1*1卷积核的作用是什么？</strong></p>
-<p>在1*1卷积核中，我们可以对不同通道的相同位置的像素值进行计算并加和，有此将CxWxH的张量转化为1xWxH的张量，实现降通道操作，具体图示如下：</p>
+<p>Concatenate将每一路径得到的张量拼接成一个张量</p>
+<p><strong>在进行Average Pooling池化时，可以进行相应的padding和stride来保证张量的w和h不会改变</strong></p>
+<h3 id="1-1卷积核的作用是什么？"><a href="#1-1卷积核的作用是什么？" class="headerlink" title="1*1卷积核的作用是什么？"></a>1*1卷积核的作用是什么？</h3><p>在1*1卷积核中，我们可以对不同通道的相同位置的像素值进行计算并加和，有此将CxWxH的张量转化为1xWxH的张量，实现降通道操作，具体图示如下：</p>
 <img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018150809527.png" alt="image-20241018150809527" style="zoom: 25%;" />
 
-<p><strong>为什么需要1*1的卷积核？</strong></p>
+<h3 id="为什么需要1-1的卷积核？"><a href="#为什么需要1-1的卷积核？" class="headerlink" title="为什么需要1*1的卷积核？"></a>为什么需要1*1的卷积核？</h3><p>可以对图像数据进行降通道的操作，在卷积运算中显著的减少运算量</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019132722039.png" alt="image-20241019132722039" style="zoom:33%;" />
 
+<p>再上图的卷积运算中，我们将192x28x28的数据卷积成32x28x28的数据，需要进行的运算操作数为<br>$$<br>5^2\times28^2\times192\times32&#x3D;120422400<br>$$<br><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019133516579.png" alt="image-20241019133516579" style="zoom:33%;" /></p>
+<p>如果先对原数据进行1*1的卷积降低通道数，再进行5x5卷积，所需的运算操作数为<br>$$<br>1^2\times28^2\times192\times16+5^2\times28^2\times16\times32&#x3D;12433648<br>$$<br><strong>由此可见运算操作数明显减少</strong></p>
+<h3 id="代码实现及注释"><a href="#代码实现及注释" class="headerlink" title="代码实现及注释"></a>代码实现及注释</h3>
 	
 	</div>
   <a type="button" href="/2024/10/18/卷积神经网络进阶/#more" class="btn btn-default more">阅读此文</a>
@@ -363,9 +367,9 @@
 		<h4>标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/算法/">算法<span>1</span></a></li>
-		
 			<li><a href="/tags/神经网络/">神经网络<span>1</span></a></li>
+		
+			<li><a href="/tags/算法/">算法<span>1</span></a></li>
 		
 		 
 		</ul>
