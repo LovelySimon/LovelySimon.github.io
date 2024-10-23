@@ -120,6 +120,66 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2024/10/23/决策树模型/" >决策树模型</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-10-23  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<blockquote>
+<p>斯坦福吴恩达2022机器学习</p>
+</blockquote>
+<h2 id="简单的决策树模型"><a href="#简单的决策树模型" class="headerlink" title="简单的决策树模型"></a>简单的决策树模型</h2><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023140523587.png" alt="image-20241023140523587" style="zoom:50%;" />
+
+<p>类似于完全二叉树，有根节点和叶节点</p>
+<p>模型建立的两个关键点：</p>
+<ul>
+<li>如何决定分割的特征？</li>
+<li>如何判断叶节点的分类结果好坏？</li>
+</ul>
+<h3 id="纯度测量"><a href="#纯度测量" class="headerlink" title="纯度测量"></a>纯度测量</h3><p>用熵来作为纯度的度量</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144121398.png" alt="image-20241023144121398" style="zoom: 50%;" />
+
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144347508.png" alt="image-20241023144347508" style="zoom:50%;" />
+
+<p>当结点中的样本全为猫时，p1&#x3D;1，此时熵的值为0，当样本中全为狗时同理</p>
+<p>当结点中的样本为一半猫一半狗时，p1&#x3D;0.5，此时熵最高为1</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144944385.png" alt="image-20241023144944385" style="zoom:50%;" />
+
+<p>在p&#x3D;0的情形中，log(0)是无法计算的，那么我们需要提前约定0log(0)&#x3D;0，才能正确计算熵</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023145116195.png" alt="image-20241023145116195" style="zoom:33%;" />
+
+<h3 id="选择分离的特征"><a href="#选择分离的特征" class="headerlink" title="选择分离的特征"></a>选择分离的特征</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023145853878.png" alt="image-20241023145853878" style="zoom:50%;" />
+
+<p>在上图中，每个特征筛选出来的分支都有各自的纯度熵，那么如何根据这些熵来判断哪个特征分类情况最好呢？我们使用每个特征的熵的加权平均来作为评估方式。</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023151127603.png" alt="image-20241023151127603" style="zoom: 50%;" />
+
+<p>在耳朵形状这一特征中，五个样本被分到了立耳，五个样本被分到了塌耳，那么则可通过上图公式1来进行加权平均计算出式子2</p>
+<p>根节点的熵为H(5&#x2F;10)&#x3D;1，因为根节点在用特征分类前是十个样本，其中五个样本是猫。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023151728440.png" alt="image-20241023151728440"></p>
+<p>最后的评估指标等于根节点的熵减去式子2得到熵的减少，即拆分信息增益，分类特征2和3同理，选择熵的减少量最大的特征。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023190739340.png" alt="image-20241023190739340"></p>
+
+	
+	</div>
+  <a type="button" href="/2024/10/23/决策树模型/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2024/10/22/斯坦福吴恩达机器学习2022课程笔记/" >数据集的误差指标与权衡</a>
 		</h3>
 		</div>
@@ -495,11 +555,11 @@
 		<h4>标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
+			<li><a href="/tags/机器学习/">机器学习<span>2</span></a></li>
+		
 			<li><a href="/tags/算法/">算法<span>1</span></a></li>
 		
 			<li><a href="/tags/神经网络/">神经网络<span>1</span></a></li>
-		
-			<li><a href="/tags/机器学习/">机器学习<span>1</span></a></li>
 		
 		 
 		</ul>
@@ -511,6 +571,10 @@
 <div class="widget">
   <h4>最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2024/10/23/决策树模型/" ><i class="fa fa-file-o"></i>决策树模型</a>
+      </li>
     
       <li>
         <a href="/2024/10/22/斯坦福吴恩达机器学习2022课程笔记/" ><i class="fa fa-file-o"></i>数据集的误差指标与权衡</a>

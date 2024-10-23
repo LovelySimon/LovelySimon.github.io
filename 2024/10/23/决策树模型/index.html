@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>数据集的误差指标与权衡 | 哥们废了</title>
+  <title>决策树模型 | 哥们废了</title>
   <meta name="author" content="Simon An">
   
   <meta name="description" content="记录在NJUST学习和生活历程">
@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="数据集的误差指标与权衡"/>
+  <meta property="og:title" content="决策树模型"/>
   <meta property="og:site_name" content="哥们废了"/>
 
   
@@ -95,7 +95,7 @@
 
 	
 		<div class="page-header">
-			<h1> 数据集的误差指标与权衡</h1>
+			<h1> 决策树模型</h1>
 		</div>
 	
 
@@ -113,29 +113,38 @@
 	  		
 
 	  <blockquote>
-<p>课程是斯坦福吴恩达2022机器学习</p>
+<p>斯坦福吴恩达2022机器学习</p>
 </blockquote>
-<h3 id="交叉验证集的预测误差指标"><a href="#交叉验证集的预测误差指标" class="headerlink" title="交叉验证集的预测误差指标"></a>交叉验证集的预测误差指标</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022162017194.png" alt="image-20241022162017194" style="zoom: 50%;" />
+<h2 id="简单的决策树模型"><a href="#简单的决策树模型" class="headerlink" title="简单的决策树模型"></a>简单的决策树模型</h2><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023140523587.png" alt="image-20241023140523587" style="zoom:50%;" />
 
+<p>类似于完全二叉树，有根节点和叶节点</p>
+<p>模型建立的两个关键点：</p>
 <ul>
-<li>TP：True Positive预测的分类和实际分类相符且均为正例</li>
-<li>TN：True Negative预测的分类和实际分类相符且均为负例</li>
-<li>FP：False Negative预测的分类和实际分类不符，且预测的是正例</li>
-<li>FN：False Negative预测的分类和实际分类不符，且预测的是负例</li>
+<li>如何决定分割的特征？</li>
+<li>如何判断叶节点的分类结果好坏？</li>
 </ul>
-<h3 id="预测精确度的计算："><a href="#预测精确度的计算：" class="headerlink" title="预测精确度的计算："></a>预测精确度的计算：</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022162508083.png" alt="image-20241022162508083"></p>
-<p>对于精确度我们可以理解为，假设在病人预测中，我们用模型预测的有病的个体中，实际真的患病的人占预测有病的人数的多少，也就是我们模型的预测正例正确的样本数占预测为正例的样本数的多少。</p>
-<h3 id="Recall指标："><a href="#Recall指标：" class="headerlink" title="Recall指标："></a>Recall指标：</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022162717945.png" alt="image-20241022162717945"></p>
-<p>recall指标可以理解为在所有确实患病的样本中，我们的模型正确预测出了多少样本，即预测正例且正确的样本数占实际为正例的样本数的多少。</p>
-<h3 id="精确度和recall之间的权衡"><a href="#精确度和recall之间的权衡" class="headerlink" title="精确度和recall之间的权衡"></a>精确度和recall之间的权衡</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022164144857.png" alt="image-20241022164144857"></p>
-<p>假设在病人患病预测中，我们使用罗杰斯蒂回归来预测病人患病的概率，函数返回值大于0.5则预测为正例，若函数返回值小于0.5则预测为负例。但如果患病的话会接受非常痛苦且昂贵的治疗，且患病不治疗的后果并没有那么严重，那么我们可以想要让模型在预测为正例时更加谨慎些，即提高阈值到0.7。</p>
-<p>在提高阈值之后，我们在模型预测为正例的样本中，实际患病的样本数占正例样本更多了，因为我们预测的非常谨慎，那么预测中真的患病的人数也会占更多数，此时我们的精确率会提高。但是相反的，在所有真正患病的样本中，我们预测的患病人数占的比例也少了，recall指标会下降。</p>
-<p>同样，如果假设患病治疗费用和代价很低，但不治疗后果严重，那么我们希望模型在预测患病时没那么严谨，来保证更多的病人被正确预测出疾病，那么就可以降低阈值，此时精确度降低但recall升高。</p>
-<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>如何让模型自动选择合适的权衡？</p>
-<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022170135926.png" alt="image-20241022170135926"></p>
-<p>在这三个算法中，各有优点很难根据精确度和recall评判哪个是最优的算法，这时就需要F1Score帮助</p>
-<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022170421858.png" alt="image-20241022170421858"></p>
-<p>F1Score更高的算法会被选择</p>
+<h3 id="纯度测量"><a href="#纯度测量" class="headerlink" title="纯度测量"></a>纯度测量</h3><p>用熵来作为纯度的度量</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144121398.png" alt="image-20241023144121398" style="zoom: 50%;" />
+
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144347508.png" alt="image-20241023144347508" style="zoom:50%;" />
+
+<p>当结点中的样本全为猫时，p1&#x3D;1，此时熵的值为0，当样本中全为狗时同理</p>
+<p>当结点中的样本为一半猫一半狗时，p1&#x3D;0.5，此时熵最高为1</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144944385.png" alt="image-20241023144944385" style="zoom:50%;" />
+
+<p>在p&#x3D;0的情形中，log(0)是无法计算的，那么我们需要提前约定0log(0)&#x3D;0，才能正确计算熵</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023145116195.png" alt="image-20241023145116195" style="zoom:33%;" />
+
+<h3 id="选择分离的特征"><a href="#选择分离的特征" class="headerlink" title="选择分离的特征"></a>选择分离的特征</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023145853878.png" alt="image-20241023145853878" style="zoom:50%;" />
+
+<p>在上图中，每个特征筛选出来的分支都有各自的纯度熵，那么如何根据这些熵来判断哪个特征分类情况最好呢？我们使用每个特征的熵的加权平均来作为评估方式。</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023151127603.png" alt="image-20241023151127603" style="zoom: 50%;" />
+
+<p>在耳朵形状这一特征中，五个样本被分到了立耳，五个样本被分到了塌耳，那么则可通过上图公式1来进行加权平均计算出式子2</p>
+<p>根节点的熵为H(5&#x2F;10)&#x3D;1，因为根节点在用特征分类前是十个样本，其中五个样本是猫。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023151728440.png" alt="image-20241023151728440"></p>
+<p>最后的评估指标等于根节点的熵减去式子2得到熵的减少，即拆分信息增益，分类特征2和3同理，选择熵的减少量最大的特征。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023190739340.png" alt="image-20241023190739340"></p>
 	  
 	</div>
 
@@ -145,13 +154,12 @@
 
     
     
-    <a href="/2024/10/23/决策树模型/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2024/10/18/卷积神经网络进阶/" type="button" class="btn btn-default ">下一页<i
+    <a href="/2024/10/22/斯坦福吴恩达机器学习2022课程笔记/" type="button" class="btn btn-default ">下一页<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -180,7 +188,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2024-10-22 
+	2024-10-23 
 	</div>
 	
 
