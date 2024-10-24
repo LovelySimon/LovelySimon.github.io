@@ -1,118 +1,146 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en" class="light">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="cache-control" content="no-cache">
-  <meta http-equiv="expires" content="0">
   
-  <title>AdvancedMachineLearning结课报告专用 | 哥们废了</title>
-  <meta name="author" content="Simon An">
+  <title>
+    
+    AdvancedMachineLearning结课报告专用
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   
-  <meta name="description" content="记录在NJUST学习和生活历程">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="AdvancedMachineLearning结课报告专用"/>
-  <meta property="og:site_name" content="哥们废了"/>
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
 
   
-    <meta property="og:image" content=""/>
-  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
 
   
-  
-    <link href="/favicon.png" rel="icon">
-  
-  
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link rel="stylesheet" href="/css/prism/material-light.css">
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
   
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-70812759-1', 'auto');
-  ga('send', 'pageview');
-</script>
+<link rel="stylesheet" href="/css/prism/material-dark.css">
 
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
 
 <meta name="generator" content="Hexo 7.3.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
 
- <body>  
-  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-	  <a class="navbar-brand" href="/">哥们废了</a>
-      <div class="collapse navbar-collapse nav-menu">
-		<ul class="nav navbar-nav">
-		  
-		  <li>
-			<a href="/archives" title="All the articles.">
-			  <i class=""></i>Archives
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/tags" title="All the tags.">
-			  <i class=""></i>Tags
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/about" title="About me.">
-			  <i class=""></i>About
-			</a>
-		  </li>
-		  
-		</ul>
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%B7%E6%A3%AE%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.</span> <span class="toc-text">海森矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">牛顿法优化问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">牛顿法的缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LBFGS%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">LBFGS优化算法</span></a></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">AdvancedMachineLearning结课报告专用</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2024-10-23</div>
+      <div class="article-tags">
+        
+        <a href="/tags/机器学习">#机器学习</a>
+        
       </div>
-    </div> <!-- container -->
-</nav>
-<div class="clearfix"></div>
-
-  <div class="container">
-  	<div class="content">
-    	 
-
-
-	
-		<div class="page-header">
-			<h1> AdvancedMachineLearning结课报告专用</h1>
-		</div>
-	
-
-
-
-<div class="row post">
-	<!-- cols -->
-	
-	<div id="top_meta"></div>
-	<div class="col-md-9">
-	
-
-	<!-- content -->
-	<div class="mypage">		
-	  		
-
-	  <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="海森矩阵"><a href="#海森矩阵" class="headerlink" title="海森矩阵"></a>海森矩阵</h3><p>是一个多元函数的二阶偏导数构成的方阵，<strong>描述了函数的局部曲率</strong>。在工程实际问题的优化设计中，所列的目标函数往往很复杂，为了使问题简化，常常将目标函数在某点邻域展开成泰勒多项式来逼近原函数，此时函数在某点泰勒展开式的矩阵形式中会涉及到黑塞矩阵。</p>
+    </div>
+  </div>
+  <div class="article">
+  
+  <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="海森矩阵"><a href="#海森矩阵" class="headerlink" title="海森矩阵"></a>海森矩阵</h3><p>是一个多元函数的二阶偏导数构成的方阵，<strong>描述了函数的局部曲率</strong>。在工程实际问题的优化设计中，所列的目标函数往往很复杂，为了使问题简化，常常将目标函数在某点邻域展开成泰勒多项式来逼近原函数，此时函数在某点泰勒展开式的矩阵形式中会涉及到黑塞矩阵。</p>
 <p>对于一个函数</p>
 <img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024095230966.png" alt="image-20241024095230966" style="zoom: 50%;" />
 
@@ -144,127 +172,28 @@
 <li>对函数有较为严格的要求，必须具有连续的一阶和二阶偏导数，海森矩阵必须是正定的</li>
 </ul>
 <h2 id="LBFGS优化算法"><a href="#LBFGS优化算法" class="headerlink" title="LBFGS优化算法"></a>LBFGS优化算法</h2><p>在一些经典的优化算法中，比如梯度下降，SGD，Adam等都是在一阶法的基础上进行改进，加快收敛的速率。而牛顿法则是利用二阶法，在收敛速度上远快于一阶，但如果目标函数非凸时，二阶法可能收敛到鞍点。针对二阶法存在的问题提出了BFGS和低存储的LBFGS方法</p>
-	  
-	</div>
 
-	<div>
-  	<center>
-	<div class="pagination">
-
-    
-    
-    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
-    
-
-    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
-    
-    <a href="/2024/10/23/决策树模型/" type="button" class="btn btn-default ">下一页<i
-                class="fa fa-arrow-circle-o-right"></i></a>
-    
-
-    
 </div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
 
-    </center>
-	</div>
-	
-	<!-- comment -->
-	
-<section id="comment">
-    <h2 class="title">留言</h2>
+  
+<link rel="stylesheet" href="/css/o3o.css">
 
-    
-</section>
-
-
-	</div> <!-- col-md-9/col-md-12 -->
-		
-	
-	<div id="side_meta">
-		<div class="col-md-3" id="post_meta"> 
-
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	2024-10-23 
-	</div>
-	
-
-	<!-- categories -->
-    
-
-	<!-- tags -->
-	
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
-    <ul id="tags" class="tag_box list-unstyled collapse in">	  
-	    
-  <li><a href="/tags/机器学习/">机器学习<span>3</span></a></li>
-    </ul>
-	</div>
-		
-
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
-
-	</div>
-		
-
-</div><!-- row -->
-
-
-
-	</div>
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 Simon An | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" href=""><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/lovelysimon"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href=""><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="anlinjie87@gmail.com"><i class="iconfont icon-mail"></i></a>
   </div>
-  <div class="container-narrow">
-  <footer> <p>
-  &copy; 2024 Simon An
-  
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
-     <br> Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
-</p>
- </footer>
-</div> <!-- container-narrow -->
-  
-
-
-  
-<a id="gotop" href="#">   
-  <span>⬆︎TOP</span>
-</a>
-
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
-
+</footer>
+  </div>
 </body>
-   </html>
+
+
+</html>
