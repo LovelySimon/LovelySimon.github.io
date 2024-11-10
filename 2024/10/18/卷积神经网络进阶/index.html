@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    卷积神经网络进阶
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GoogleNet"><span class="toc-number">1.</span> <span class="toc-text">GoogleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inception-Module"><span class="toc-number">1.1.</span> <span class="toc-text">Inception Module</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%8D%B7%E7%A7%AF%E6%A0%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">1*1卷积核的作用是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%811-1%E7%9A%84%E5%8D%B7%E7%A7%AF%E6%A0%B8%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">为什么需要1*1的卷积核？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%8F%8A%E6%B3%A8%E9%87%8A"><span class="toc-number">1.1.3.</span> <span class="toc-text">代码实现及注释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9CResnet"><span class="toc-number">2.</span> <span class="toc-text">残差网络Resnet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E6%88%96%E8%80%85%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%EF%BC%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">为什么会出现梯度消失或者梯度爆炸？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1-%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.0.2.</span> <span class="toc-text">梯度消失&#x2F;梯度爆炸的解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.3.</span> <span class="toc-text">残差网络如何解决梯度消失问题?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.0.4.</span> <span class="toc-text">模型实现及代码复现</span></a></li></ol></li></ol></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">卷积神经网络进阶</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2024-10-18</div>
+      <div class="article-tags">
+        
+        <a href="/tags/神经网络">#神经网络</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <p>课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补</p>
+<h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018145146213.png" alt="image-20241018145146213"></p>
+<h2 id="Inception-Module"><a href="#Inception-Module" class="headerlink" title="Inception Module"></a>Inception Module</h2><img src="C:\Users\alj\AppData\Roaming\Typora\typora-user-images\image-20241018144916751.png" alt="image-20241018144916751" style="zoom:33%;" />
+
+<p>上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception</p>
+<p>Concatenate将每一路径得到的张量拼接成一个张量</p>
+<p><strong>在进行Average Pooling池化时，可以进行相应的padding和stride来保证张量的w和h不会改变</strong></p>
+<h3 id="1-1卷积核的作用是什么？"><a href="#1-1卷积核的作用是什么？" class="headerlink" title="1*1卷积核的作用是什么？"></a>1*1卷积核的作用是什么？</h3><p>在1*1卷积核中，我们可以对不同通道的相同位置的像素值进行计算并加和，有此将CxWxH的张量转化为1xWxH的张量，实现降通道操作，具体图示如下：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018150809527.png" alt="image-20241018150809527" style="zoom: 25%;" />
+
+<h3 id="为什么需要1-1的卷积核？"><a href="#为什么需要1-1的卷积核？" class="headerlink" title="为什么需要1*1的卷积核？"></a>为什么需要1*1的卷积核？</h3><p>可以对图像数据进行降通道的操作，在卷积运算中显著的减少运算量</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019132722039.png" alt="image-20241019132722039" style="zoom:33%;" />
+
+<p>再上图的卷积运算中，我们将192x28x28的数据卷积成32x28x28的数据，需要进行的运算操作数为<br>$$<br>5^2\times28^2\times192\times32&#x3D;120422400<br>$$<br><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019133516579.png" alt="image-20241019133516579" style="zoom:33%;" /></p>
+<p>如果先对原数据进行1*1的卷积降低通道数，再进行5x5卷积，所需的运算操作数为<br>$$<br>1^2\times28^2\times192\times16+5^2\times28^2\times16\times32&#x3D;12433648<br>$$<br><strong>由此可见运算操作数明显减少</strong></p>
+<h3 id="代码实现及注释"><a href="#代码实现及注释" class="headerlink" title="代码实现及注释"></a>代码实现及注释</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150142932.png" alt="image-20241019150142932"></p>
+<p>池化层对应代码如下：</p>
+<figure class="highlight py"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.branch_pool = torch.nn.Conv2d(in_channels, <span class="number">24</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">branch_pool = F.avg_pool2d(x, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>)</span><br><span class="line">branch_pool = <span class="variable language_">self</span>.branch_pool(branch_pool)</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150259362.png" alt="image-20241019150259362"></p>
+<p>1x1卷积层对应代码如下：</p>
+<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.branch1x1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line"></span><br><span class="line">branch1x1 = self.branch1x1(x)</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150648224.png" alt="image-20241019150648224"></p>
+<p>5x5卷积层对应代码如下：</p>
+<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line"></span><br><span class="line">branch5x5 = self.branch5x5_1(x)</span><br><span class="line">branch5x5 = self.branch5x5_2(branch5x5)</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019151101886.png" alt="image-20241019151101886"></p>
+<p>3x3卷积层对应代码如下：</p>
+<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line"></span><br><span class="line">branch3x3 = self.branch3x3_1(x)</span><br><span class="line">branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">branch3x3 = self.branch3x3_3(branch3x3)</span><br></pre></td></tr></table></div></figure>
+
+<p>最后对每一块得到的卷积张量在通道维度进行合并形成新的张量</p>
+<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></div></figure>
+
+<p>dim指定在某一维度进行合并张量，包含（batch，通道，宽，高）四个维度</p>
+<p>总体代码如下：</p>
+<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class InceptionA(torch.nn.Module):</span><br><span class="line">    def __init__(self, in_channels):</span><br><span class="line">        super(InceptionA, self).__init__()</span><br><span class="line">        # 1x1块</span><br><span class="line">        self.branch1x1 = torch.nn.Conv2d(in_channels, 16, 	kernel_size=1)</span><br><span class="line">        # 5x5块</span><br><span class="line">        self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line">        # 3x3块</span><br><span class="line">        self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">        self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line">        # 池化块</span><br><span class="line">        self.branch_pool = torch.nn.Conv2d(in_channels, 24, kernel_size=1)</span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        branch1x1 = self.branch1x1(x)</span><br><span class="line"></span><br><span class="line">        branch5x5 = self.branch5x5_1(x)</span><br><span class="line">        branch5x5 = self.branch5x5_2(branch5x5)</span><br><span class="line"></span><br><span class="line">        branch3x3 = self.branch3x3_1(x)</span><br><span class="line">        branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">        branch3x3 = self.branch3x3_3(branch3x3)</span><br><span class="line"></span><br><span class="line">        branch_pool = F.avg_pool2d(x, kernel_size=3, stride=1, padding=1)</span><br><span class="line">        branch_pool = self.branch_pool(branch_pool)</span><br><span class="line"></span><br><span class="line">        outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">        return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020154033087.png" alt="image-20241020154033087"></p>
+<h1 id="残差网络Resnet"><a href="#残差网络Resnet" class="headerlink" title="残差网络Resnet"></a>残差网络Resnet</h1><p>随着神经网络层数的不断增加，在反向传播的过程中可能出现梯度爆炸或者梯度消失的情况</p>
+<h3 id="为什么会出现梯度消失或者梯度爆炸？"><a href="#为什么会出现梯度消失或者梯度爆炸？" class="headerlink" title="为什么会出现梯度消失或者梯度爆炸？"></a>为什么会出现梯度消失或者梯度爆炸？</h3><p>现在假设一个模型，其中连接层数为4层，反向传播（Backpropagation）用于计算每一层的权重 WWW 的梯度。这是通过链式法则计算的。假设神经网络的层数从1到4，每一层的输入、权重和激活函数可以定义如下</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020163910140.png" alt="image-20241020163910140" style="zoom: 50%;" />
+
+<p>在计算离输入层较近的层的梯度时，会发现梯度的计算来源于上层的计算总和</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020184804511.png" alt="image-20241020184804511"></p>
+<p>链式法则是一个连乘的操作，在多次乘积操作后，最后一层的梯度可能趋近于零，也就是梯度消失，但若偏导数值大则会出现梯度爆炸的情况。</p>
+<h3 id="梯度消失-梯度爆炸的解决方法"><a href="#梯度消失-梯度爆炸的解决方法" class="headerlink" title="梯度消失&#x2F;梯度爆炸的解决方法"></a>梯度消失&#x2F;梯度爆炸的解决方法</h3><ol>
+<li><p>梯度剪切：针对于梯度爆炸的情况，将梯度限制在一个限定的阈值内，如果更新梯度时梯度超过了阈值则将梯度改为阈值的边界，防止梯度过大的情况出现。</p>
+</li>
+<li><p>权重正则化：通过对权重做正则化来避免过拟合的情况出现，在梯度爆炸是权重的值可能会非常高，用正则化项来限制权重的大小，防止梯度爆炸的情况发生。</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021141852661.png" alt="image-20241021141852661" style="zoom:50%;" />
+
+<p>其中α为正则化项的系数</p>
+</li>
+<li><p>用Relu代替sigmoid作为激活函数：使用sigmoid函数作为激活函数时梯度值小于等于0.25，在连乘操作后显然会出现梯度消失或梯度爆炸的问题，但如果我们使用Relu函数作为激活函数，在对激活函数求导时，大于0的部分导数是恒等于1的，连乘不会出现梯度消失问题。</p>
+</li>
+<li><p>Batchnorm：通过规范化操作将输出信号x规范化到均值为0，方差为1保证网络的稳定性。</p>
+</li>
+<li><p>残差网络</p>
+</li>
+</ol>
+<h3 id="残差网络如何解决梯度消失问题"><a href="#残差网络如何解决梯度消失问题" class="headerlink" title="残差网络如何解决梯度消失问题?"></a>残差网络如何解决梯度消失问题?</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021145340356.png" alt="image-20241021145340356" style="zoom:50%;" />
+
+<p>在原始的堆叠模型中，我们将需要的底层映射结果设为H(x)，则H(x)&#x3D;F(x)</p>
+<p>但是在残差学习块中，我们假设需要的底层映射结果仍为H(x),在堆叠的非线性层我们让其训练另一个映射：F(x)&#x3D;H(x)-x，则原始的底层映射结果改变为H(x)&#x3D;F(x)+x,那么在上文的反向传播梯度计算中，公式可变为：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021151441848.png" alt="image-20241021151441848" style="zoom:50%;" />
+
+<p>由此可见，连乘的因式有大于一的项，能够有效避免梯度消失问题。</p>
+<p>如果还没有理解可以参考链接：<a target="_blank" rel="noopener" href="http://www.atait.se.ritsumei.ac.jp/AIArc/WangZC/ResNet.pdf">http://www.atait.se.ritsumei.ac.jp/AIArc/WangZC/ResNet.pdf</a></p>
+<h3 id="模型实现及代码复现"><a href="#模型实现及代码复现" class="headerlink" title="模型实现及代码复现"></a>模型实现及代码复现</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021160358150.png" alt="image-20241021160358150"></p>
+<p>与原始的堆叠模型不同的是，在堆叠块中添加跳连接</p>
+<figure class="highlight py"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ResidualBlock</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, channels</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResidualBlock, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.channels = channels</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)  <span class="comment"># padding来保证维度不会改变</span></span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        y = F.relu(<span class="variable language_">self</span>.conv1(x))</span><br><span class="line">        y = <span class="variable language_">self</span>.conv2(y)</span><br><span class="line">        <span class="keyword">return</span> F.relu(x + y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ResNet</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResNet, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(<span class="number">1</span>, <span class="number">16</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.mp = torch.nn.MaxPool2d(<span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock1 = ResidualBlock(<span class="number">16</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock2 = ResidualBlock(<span class="number">32</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc = torch.nn.Linear(<span class="number">512</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        in_size = x.size(<span class="number">0</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu(<span class="variable language_">self</span>.conv1))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock1(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu((<span class="variable language_">self</span>.conv2)))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock2(x)</span><br><span class="line">        x = x.view(in_size, -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.fc(x)</span><br></pre></td></tr></table></div></figure>
+
+
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2024-2025 Simon An </div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/lovelysimon"><i class="iconfont icon-github-fill"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    AdvancedMachineLearning结课报告专用
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%B7%E6%A3%AE%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.</span> <span class="toc-text">海森矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">牛顿法优化问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">牛顿法的缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LBFGS%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">LBFGS优化算法</span></a></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">AdvancedMachineLearning结课报告专用</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2024-10-23</div>
+      <div class="article-tags">
+        
+        <a href="/tags/机器学习">#机器学习</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="海森矩阵"><a href="#海森矩阵" class="headerlink" title="海森矩阵"></a>海森矩阵</h3><p>是一个多元函数的二阶偏导数构成的方阵，<strong>描述了函数的局部曲率</strong>。在工程实际问题的优化设计中，所列的目标函数往往很复杂，为了使问题简化，常常将目标函数在某点邻域展开成泰勒多项式来逼近原函数，此时函数在某点泰勒展开式的矩阵形式中会涉及到黑塞矩阵。</p>
+<p>对于一个函数</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024095230966.png" alt="image-20241024095230966" style="zoom: 50%;" />
+
+<p>如果f的所有二阶导数都存在，那么f的海森矩阵为：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024095330522.png" alt="image-20241024095330522" style="zoom:50%;" />
+
+<p>将二元函数的泰勒展开式推广到多元函数，则在一点处的泰勒展开的矩阵形式为：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024100815506.png" alt="image-20241024100815506" style="zoom:50%;" />
+
+<p>其中<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024101048882.png" alt="image-20241024101048882" style="zoom:50%;" />是函数在X0点的梯度，G(X0)就是海森矩阵。</p>
+<p>海森矩阵是由目标函数在x点处的二阶偏导数组成的n*n阶对称矩阵</p>
+<ul>
+<li>如果海森矩阵是一个正定矩阵，则临界点是一个局部极小值</li>
+<li>如果海森矩阵是一个负定矩阵，则临界点是一个局部极大值</li>
+<li>如果是不定矩阵，则临界点处不是极值</li>
+</ul>
+<h3 id="牛顿法优化问题"><a href="#牛顿法优化问题" class="headerlink" title="牛顿法优化问题"></a>牛顿法优化问题</h3><p>牛顿法的基本思想是利用迭代点Xk处的一阶导数(梯度)和二阶导数(Hessen矩阵)对目标函数进行二次函数近似，然后把二次模型的极小点作为新的迭代点，并不断重复这一过程，直至求得满足精度的近似极小值。牛顿法的速度相当快，而且能高度逼近最优值。</p>
+<p>将一个需要求解的损失函数函数f(x)进行泰勒展开到二阶，得到</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024104750653.png" alt="image-20241024104750653" style="zoom:50%;" />
+
+<p>对上式求关于x的导数并令其等于0</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024104853712.png" alt="image-20241024104853712" style="zoom:50%;" />
+
+<p>那么求得极值点的x坐标为<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024104946040.png" alt="image-20241024104946040"></p>
+<p>这就是牛顿法的更新公式</p>
+<p>牛顿法的精髓就是二阶收敛，不仅利用了损失函数的一阶偏导数，也用到了损失函数的二阶偏导数，即梯度<strong>变化的趋势</strong>，因此比梯度下降法更快的确定合适的搜索方向，具有二阶收敛速度。</p>
+<h3 id="牛顿法的缺点："><a href="#牛顿法的缺点：" class="headerlink" title="牛顿法的缺点："></a>牛顿法的缺点：</h3><ul>
+<li>计算复杂</li>
+<li>对函数有较为严格的要求，必须具有连续的一阶和二阶偏导数，海森矩阵必须是正定的</li>
+</ul>
+<h2 id="LBFGS优化算法"><a href="#LBFGS优化算法" class="headerlink" title="LBFGS优化算法"></a>LBFGS优化算法</h2><p>在一些经典的优化算法中，比如梯度下降，SGD，Adam等都是在一阶法的基础上进行改进，加快收敛的速率。而牛顿法则是利用二阶法，在收敛速度上远快于一阶，但如果目标函数非凸时，二阶法可能收敛到鞍点。针对二阶法存在的问题提出了BFGS和低存储的LBFGS方法</p>
+
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2024-2025 Simon An </div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/lovelysimon"><i class="iconfont icon-github-fill"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>
