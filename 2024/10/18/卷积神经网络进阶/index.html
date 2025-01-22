@@ -1,139 +1,198 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="zh-CN">
+
 <head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
+
   
-  <title>
-    
-    卷积神经网络进阶
-    
-  </title>
+  <title>卷积神经网络进阶</title>
+  
+  <link rel="canonical" href="http://example.com/2024/10/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E9%98%B6/">
+  
+  <meta name="description" content="课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补 GoogleNet Inception Module  上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception Concatenate将每一路径得到的张量拼接成一个张量 在进行">
+  
+  
+  <meta name="keywords" content="深度学习,计算机视觉">
+  
+  <meta name="author" content="Simon An">
+  
+  
+  
+  <meta property="og:site_name" content="哥们废了" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="卷积神经网络进阶" />
+  
+  <meta property="og:description" content="课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补 GoogleNet Inception Module  上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception Concatenate将每一路径得到的张量拼接成一个张量 在进行">
+  
+  <meta property="og:url" content="http://example.com/2024/10/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E9%98%B6/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="卷积神经网络进阶">
+  
+  <meta name="twitter:description" content="课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补 GoogleNet Inception Module  上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception Concatenate将每一路径得到的张量拼接成一个张量 在进行">
+  
+  
+  
+  
+  <meta name="twitter:url" content="http://example.com/2024/10/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E9%98%B6/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   
-<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+<link rel="stylesheet" href="/css/normalize.css">
 
   
-<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+<link rel="stylesheet" href="/css/skeleton.css">
 
   
-<link rel="stylesheet" href="/css/prism/material-light.css">
+<link rel="stylesheet" href="/css/custom.css">
 
   
-<link rel="stylesheet" href="/css/prism/material-dark.css">
+<link rel="stylesheet" href="/css/prism-dark.css">
 
   
-<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
 
   
-<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pic.min.js" defer></script>
+  
 
   
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
-
+  <script src="/js/search.min.js" defer></script>
   
-<link rel="stylesheet" href="/iconfont/iconfont.css">
 
 <meta name="generator" content="Hexo 7.3.0"></head>
-<script>
-  function setIsNight(isNight) {
-    localStorage.setItem('isNight', isNight)
-  }
-
-  function getIsNight() {
-    return localStorage.getItem('isNight')
-  }
-
-  function switchTheme() {
-    let isNight = getIsNight()
-    if (isNight === 'false') {
-      document.documentElement.className = 'dark'
-      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
-      setIsNight('true')
-    } else {
-      document.documentElement.className = 'light'
-      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
-      setIsNight('false')
-    }
-  }
-
-  let isNight = getIsNight()
-  if (isNight == null) {
-    isNight = 'false'
-    setIsNight('false')
-  }
-  if (isNight === 'false') {
-    document.documentElement.className = 'light'
-  } else {
-    document.documentElement.className = 'dark'
-  }
-</script>
 
 <body>
-  <div class="show-area">
-    <header>
-  <ul class="nav">
-    <li class="nav-child">
-      <a href="/">首页</a>
-    </li>
-    <li class="nav-child">
-      <a href="/tags">标签</a>
-    </li>
-    <li class="nav-child">
-      <a href="/about">关于</a>
-    </li>
-    <li class="nav-child">
-      <a href="/board">留言</a>
-    </li>
-  </ul>
-  <div class="theme-switcher" onclick="switchTheme()">😳</div>
-  <script>
-    if (isNight === 'false') {
-      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
-    } else {
-      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
-    }
-  </script>
-</header>
-    <main class="main-body">
-  <div class="toc-container">
-    <div class="toc-toggle">
-      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
-    </div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GoogleNet"><span class="toc-number">1.</span> <span class="toc-text">GoogleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inception-Module"><span class="toc-number">1.1.</span> <span class="toc-text">Inception Module</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%8D%B7%E7%A7%AF%E6%A0%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">1*1卷积核的作用是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%811-1%E7%9A%84%E5%8D%B7%E7%A7%AF%E6%A0%B8%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">为什么需要1*1的卷积核？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%8F%8A%E6%B3%A8%E9%87%8A"><span class="toc-number">1.1.3.</span> <span class="toc-text">代码实现及注释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9CResnet"><span class="toc-number">2.</span> <span class="toc-text">残差网络Resnet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E6%88%96%E8%80%85%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%EF%BC%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">为什么会出现梯度消失或者梯度爆炸？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1-%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.0.2.</span> <span class="toc-text">梯度消失&#x2F;梯度爆炸的解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.3.</span> <span class="toc-text">残差网络如何解决梯度消失问题?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.0.4.</span> <span class="toc-text">模型实现及代码复现</span></a></li></ol></li></ol></li></ol>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
   </div>
-  
-  <script>
-    var show = false
-    function toggleShow() {
-      if (show) {
-        document.getElementsByClassName('toc')[0].className = 'toc'
-        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
-      } else {
-        document.getElementsByClassName('toc')[0].className = 'toc show'
-        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
-      }
-      show = !show
-    }
-    document.getElementsByClassName('toc')[0].onclick = toggleShow
-  </script>
-  
-  <div class="article-header">
-    <h1 class="article-title">卷积神经网络进阶</h1>
-    <div class="article-details">
-      <div class="article-post-date"><span>Posted at </span> 2024-10-18</div>
-      <div class="article-tags">
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      准备退学
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
         
-        <a href="/tags/神经网络">#神经网络</a>
+        
+          
+            <a href="mailto:anlinjie87@gmail.com" target="_blank" class="ml">Email</a>
+          
         
       </div>
     </div>
+    <hr style="margin-bottom: 2.6rem">
   </div>
-  <div class="article">
-  
+</div>
+
+        <div class="trans">
+            <h2>卷积神经网络进阶</h2>
+
   <p>课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补</p>
 <h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018145146213.png" alt="image-20241018145146213"></p>
 <h2 id="Inception-Module"><a href="#Inception-Module" class="headerlink" title="Inception Module"></a>Inception Module</h2><img src="C:\Users\alj\AppData\Roaming\Typora\typora-user-images\image-20241018144916751.png" alt="image-20241018144916751" style="zoom:33%;" />
@@ -151,26 +210,26 @@
 <p>如果先对原数据进行1*1的卷积降低通道数，再进行5x5卷积，所需的运算操作数为<br>$$<br>1^2\times28^2\times192\times16+5^2\times28^2\times16\times32&#x3D;12433648<br>$$<br><strong>由此可见运算操作数明显减少</strong></p>
 <h3 id="代码实现及注释"><a href="#代码实现及注释" class="headerlink" title="代码实现及注释"></a>代码实现及注释</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150142932.png" alt="image-20241019150142932"></p>
 <p>池化层对应代码如下：</p>
-<figure class="highlight py"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.branch_pool = torch.nn.Conv2d(in_channels, <span class="number">24</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">branch_pool = F.avg_pool2d(x, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>)</span><br><span class="line">branch_pool = <span class="variable language_">self</span>.branch_pool(branch_pool)</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.branch_pool = torch.nn.Conv2d(in_channels, <span class="number">24</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">branch_pool = F.avg_pool2d(x, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>)</span><br><span class="line">branch_pool = <span class="variable language_">self</span>.branch_pool(branch_pool)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150259362.png" alt="image-20241019150259362"></p>
 <p>1x1卷积层对应代码如下：</p>
-<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.branch1x1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line"></span><br><span class="line">branch1x1 = self.branch1x1(x)</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.branch1x1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line"></span><br><span class="line">branch1x1 = self.branch1x1(x)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150648224.png" alt="image-20241019150648224"></p>
 <p>5x5卷积层对应代码如下：</p>
-<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line"></span><br><span class="line">branch5x5 = self.branch5x5_1(x)</span><br><span class="line">branch5x5 = self.branch5x5_2(branch5x5)</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line"></span><br><span class="line">branch5x5 = self.branch5x5_1(x)</span><br><span class="line">branch5x5 = self.branch5x5_2(branch5x5)</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019151101886.png" alt="image-20241019151101886"></p>
 <p>3x3卷积层对应代码如下：</p>
-<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line"></span><br><span class="line">branch3x3 = self.branch3x3_1(x)</span><br><span class="line">branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">branch3x3 = self.branch3x3_3(branch3x3)</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line"></span><br><span class="line">branch3x3 = self.branch3x3_1(x)</span><br><span class="line">branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">branch3x3 = self.branch3x3_3(branch3x3)</span><br></pre></td></tr></table></figure>
 
 <p>最后对每一块得到的卷积张量在通道维度进行合并形成新的张量</p>
-<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></figure>
 
 <p>dim指定在某一维度进行合并张量，包含（batch，通道，宽，高）四个维度</p>
 <p>总体代码如下：</p>
-<figure class="highlight plaintext"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class InceptionA(torch.nn.Module):</span><br><span class="line">    def __init__(self, in_channels):</span><br><span class="line">        super(InceptionA, self).__init__()</span><br><span class="line">        # 1x1块</span><br><span class="line">        self.branch1x1 = torch.nn.Conv2d(in_channels, 16, 	kernel_size=1)</span><br><span class="line">        # 5x5块</span><br><span class="line">        self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line">        # 3x3块</span><br><span class="line">        self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">        self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line">        # 池化块</span><br><span class="line">        self.branch_pool = torch.nn.Conv2d(in_channels, 24, kernel_size=1)</span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        branch1x1 = self.branch1x1(x)</span><br><span class="line"></span><br><span class="line">        branch5x5 = self.branch5x5_1(x)</span><br><span class="line">        branch5x5 = self.branch5x5_2(branch5x5)</span><br><span class="line"></span><br><span class="line">        branch3x3 = self.branch3x3_1(x)</span><br><span class="line">        branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">        branch3x3 = self.branch3x3_3(branch3x3)</span><br><span class="line"></span><br><span class="line">        branch_pool = F.avg_pool2d(x, kernel_size=3, stride=1, padding=1)</span><br><span class="line">        branch_pool = self.branch_pool(branch_pool)</span><br><span class="line"></span><br><span class="line">        outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">        return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class InceptionA(torch.nn.Module):</span><br><span class="line">    def __init__(self, in_channels):</span><br><span class="line">        super(InceptionA, self).__init__()</span><br><span class="line">        # 1x1块</span><br><span class="line">        self.branch1x1 = torch.nn.Conv2d(in_channels, 16, 	kernel_size=1)</span><br><span class="line">        # 5x5块</span><br><span class="line">        self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line">        # 3x3块</span><br><span class="line">        self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">        self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line">        # 池化块</span><br><span class="line">        self.branch_pool = torch.nn.Conv2d(in_channels, 24, kernel_size=1)</span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        branch1x1 = self.branch1x1(x)</span><br><span class="line"></span><br><span class="line">        branch5x5 = self.branch5x5_1(x)</span><br><span class="line">        branch5x5 = self.branch5x5_2(branch5x5)</span><br><span class="line"></span><br><span class="line">        branch3x3 = self.branch3x3_1(x)</span><br><span class="line">        branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">        branch3x3 = self.branch3x3_3(branch3x3)</span><br><span class="line"></span><br><span class="line">        branch_pool = F.avg_pool2d(x, kernel_size=3, stride=1, padding=1)</span><br><span class="line">        branch_pool = self.branch_pool(branch_pool)</span><br><span class="line"></span><br><span class="line">        outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">        return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020154033087.png" alt="image-20241020154033087"></p>
 <h1 id="残差网络Resnet"><a href="#残差网络Resnet" class="headerlink" title="残差网络Resnet"></a>残差网络Resnet</h1><p>随着神经网络层数的不断增加，在反向传播的过程中可能出现梯度爆炸或者梯度消失的情况</p>
@@ -205,26 +264,79 @@
 <p>如果还没有理解可以参考链接：<a target="_blank" rel="noopener" href="http://www.atait.se.ritsumei.ac.jp/AIArc/WangZC/ResNet.pdf">http://www.atait.se.ritsumei.ac.jp/AIArc/WangZC/ResNet.pdf</a></p>
 <h3 id="模型实现及代码复现"><a href="#模型实现及代码复现" class="headerlink" title="模型实现及代码复现"></a>模型实现及代码复现</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021160358150.png" alt="image-20241021160358150"></p>
 <p>与原始的堆叠模型不同的是，在堆叠块中添加跳连接</p>
-<figure class="highlight py"><div class="article-table"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ResidualBlock</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, channels</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResidualBlock, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.channels = channels</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)  <span class="comment"># padding来保证维度不会改变</span></span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        y = F.relu(<span class="variable language_">self</span>.conv1(x))</span><br><span class="line">        y = <span class="variable language_">self</span>.conv2(y)</span><br><span class="line">        <span class="keyword">return</span> F.relu(x + y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ResNet</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResNet, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(<span class="number">1</span>, <span class="number">16</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.mp = torch.nn.MaxPool2d(<span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock1 = ResidualBlock(<span class="number">16</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock2 = ResidualBlock(<span class="number">32</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc = torch.nn.Linear(<span class="number">512</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        in_size = x.size(<span class="number">0</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu(<span class="variable language_">self</span>.conv1))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock1(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu((<span class="variable language_">self</span>.conv2)))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock2(x)</span><br><span class="line">        x = x.view(in_size, -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.fc(x)</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ResidualBlock</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, channels</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResidualBlock, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.channels = channels</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)  <span class="comment"># padding来保证维度不会改变</span></span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        y = F.relu(<span class="variable language_">self</span>.conv1(x))</span><br><span class="line">        y = <span class="variable language_">self</span>.conv2(y)</span><br><span class="line">        <span class="keyword">return</span> F.relu(x + y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ResNet</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResNet, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(<span class="number">1</span>, <span class="number">16</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.mp = torch.nn.MaxPool2d(<span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock1 = ResidualBlock(<span class="number">16</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock2 = ResidualBlock(<span class="number">32</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc = torch.nn.Linear(<span class="number">512</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        in_size = x.size(<span class="number">0</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu(<span class="variable language_">self</span>.conv1))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock1(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu((<span class="variable language_">self</span>.conv2)))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock2(x)</span><br><span class="line">        x = x.view(in_size, -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.fc(x)</span><br></pre></td></tr></table></figure>
 
 
+  <p><a class="classtest-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a> — 2024年10月18日</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
 </div>
-  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+        <div class="row mt-2">
   
-<script src="/o3o/o3o.js"></script>
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
 
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/lovelysimon" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/s1m0nl0" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://stackoverflow.com/story/jay-an" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="StackOverflow">
+        <svg class="stackoverflow svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Stack Overflow</title><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg>
+      </a>
+      
+
+    </div>
   
-<link rel="stylesheet" href="/css/o3o.css">
+</div>
 
-</main>
-    <footer>
-  <div class="footer-info">© 2024-2025 Simon An </div>
-  <div class="footer-info">
-    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/lovelysimon"><i class="iconfont icon-github-fill"></i></a>
+      </div>
+
+    </div>
+
   </div>
-</footer>
-  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
 </body>
-
 
 </html>
