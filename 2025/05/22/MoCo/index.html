@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>MoCo</title>
+  
+  <link rel="canonical" href="http://example.com/2025/05/22/MoCo/">
+  
+  <meta name="description" content="MoCo前置知识：什么是对比学习将三个图输入到一个神经网络中得到对应的特征向量f1、f2、f3。 在特征空间中f1,f2接近，f1,f3疏远（相似类别接近，不同类别疏远），如果不明白可以先看一下Embedding。为什么要说这个呢？以最左边的猫的图片为例，我们对其进行简单变换（平移、旋转等）得到两个">
+  
+  
+  <meta name="keywords" content="深度学习,计算机视觉">
+  
+  <meta name="author" content="Simon An">
+  
+  
+  
+  <meta property="og:site_name" content="哥们废了" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="MoCo" />
+  
+  <meta property="og:description" content="MoCo前置知识：什么是对比学习将三个图输入到一个神经网络中得到对应的特征向量f1、f2、f3。 在特征空间中f1,f2接近，f1,f3疏远（相似类别接近，不同类别疏远），如果不明白可以先看一下Embedding。为什么要说这个呢？以最左边的猫的图片为例，我们对其进行简单变换（平移、旋转等）得到两个">
+  
+  <meta property="og:url" content="http://example.com/2025/05/22/MoCo/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MoCo">
+  
+  <meta name="twitter:description" content="MoCo前置知识：什么是对比学习将三个图输入到一个神经网络中得到对应的特征向量f1、f2、f3。 在特征空间中f1,f2接近，f1,f3疏远（相似类别接近，不同类别疏远），如果不明白可以先看一下Embedding。为什么要说这个呢？以最左边的猫的图片为例，我们对其进行简单变换（平移、旋转等）得到两个">
+  
+  
+  
+  
+  <meta name="twitter:url" content="http://example.com/2025/05/22/MoCo/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+  <script src="/js/search.min.js" defer></script>
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      准备退学
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+        
+          
+            <a href="mailto:anlinjie87@gmail.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>MoCo</h2>
+
+  <h1 id="MoCo"><a href="#MoCo" class="headerlink" title="MoCo"></a>MoCo</h1><h3 id="前置知识：什么是对比学习"><a href="#前置知识：什么是对比学习" class="headerlink" title="前置知识：什么是对比学习"></a>前置知识：什么是对比学习</h3><p>将三个图输入到一个神经网络中得到对应的特征向量f1、f2、f3。 在特征空间中f1,f2接近，f1,f3疏远（相似类别接近，不同类别疏远），如果不明白可以先看一下Embedding。为什么要说这个呢？以最左边的猫的图片为例，我们对其进行简单变换（平移、旋转等）得到两个新图（当然这两张图片还是猫！！没有变成狗！！对吧？），这两张新图对应的特征向量，在特征空间中接近，或者说相似度很高。生成新图，通过编码器将它们转化成Embedding向量，训练使，接近，， 疏远这个过程就是对比学习是无监督，可以看出这个编码器是很关键的，它没有因为图片的变动，而把它编码成狗。这可以作为一个pretext，当我们拥有的数据中不带标签的数据要远远大于带标签的数据的时候，我们可以用不带标签的数据进行对比学习的一个初始编码器，此编码器已经掌握了数据中的一部分特性，可以实现聚类功能，然后在用带标签数据进行微调。</p>
+<ul>
+<li>数据增强</li>
+<li>特征编码器</li>
+<li>MLP层</li>
+<li>目标函数作用阶段，正样本是一个样本和增强样本，负样本是除此之外的所有样本</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们提出了用于无监督视觉表示学习的动量对比 (MoCo)。从对比学习[29]作为字典查找的角度来看，我们构建了一个带有队列和移动平均编码器的动态字典。这使我们能够动态构建一个庞大且一致的字典，以促进对比无监督学习。MoCo在ImageNet分类的通用线性协议下提供了具有竞争力的结果。更重要的是，MoCo学习的表示可以很好地转移到下游任务。在PASCAL VOC、COCO和其他数据集上的7个检测&#x2F;分割任务中，MoCo可以优于其有监督的预训练对应物，有时大大超过了它。这表明无监督表示学习和监督表示学习之间的差距在许多视觉任务中很大程度上是接近的。</p>
+<h2 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h2><p>在视觉领域，对比学习需要为样本生成字典，而encoder编码器的作用就是施行字典查找的角色，一个编码的序列应该和它对应的关键字相同而和其他的不同，这样的学习需要被表述为最小化对比损失，从这个角度来看我们应该建立符合以下条件的字典：</p>
+<ul>
+<li>庞大一致并且在训练中会持续更新</li>
+</ul>
+<p>把字典维护成一个数据样本队列：将当前小批量数据的编码表示入队，最旧的数据表示则出队。</p>
+<p>该队列将字典大小与小批量数据的大小解耦，从而使字典能够很大。、</p>
+<p>由于字典中的键来自前面的几个小批量数据，提出使用一个缓慢更新的键编码器（它是通过查询编码器基于动量的滑动平均来实现的），以保持一致性。</p>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p>自监督学习方法通常涉及两个方面：前置任务和损失函数</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><strong>Contrastive losses对比损失：</strong></p>
+<p>在表征空间中测量两个样本之间的相似性，不同于固定的类别标签，它的接近目标是不固定的，在训练期间目标会根据网络对数据的表征适时调整，例如在无监督学习的对比学习场景下，会从数据中选取不同样本，这些样本经过网络编码后形成的表征就用于动态确定对比损失中的目标。通过这种方式，对比损失能够更灵活地引导模型学习数据间的相似性和差异性，挖掘数据内在的特征表示。</p>
+<p><strong>Adversarial losses对抗损失：</strong></p>
+<p>衡量概率分布之间的差异</p>
+<h3 id="Pretext-Tasks-前置任务"><a href="#Pretext-Tasks-前置任务" class="headerlink" title="Pretext Tasks 前置任务"></a>Pretext Tasks 前置任务</h3><p>用于辅助模型学习数据特征的任务，虽然这些任务本身并非最终目的，但通过完成他们模型可以学到更有效的数据表示</p>
+<ul>
+<li>恢复受损输入的任务：在受损的输入中恢复原始数据，比如去噪自动编码器，它以带有噪声的图像作为输入，目标是去除噪声，还原出原始清晰的图像，在这个过程中，模型学习到图像的特征和结构信息；上下文自动编码器则是通过利用图像的上下文信息来恢复输入，在恢复过程中让模型理解图像不同部分之间的关系；跨通道自动编码器（如彩色化任务），以灰度图像为输入，生成对应的彩色图像，帮助模型学习颜色信息与图像内容之间的关联。</li>
+<li>生成伪标签的任务：通过对数据进行特定操作来生成伪标签，以此引导模型学习。对单个（“示例”）图像进行变换，根据变换前后的关系生成伪标签，让模型学习到图像在不同变换下的不变性特征；</li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="把对比学习当做字典查找方法"><a href="#把对比学习当做字典查找方法" class="headerlink" title="把对比学习当做字典查找方法"></a>把对比学习当做字典查找方法</h3><p> 在对比学习的场景下，我们考虑这样一种情况：有一个经过编码的查询向量<em>q</em>，以及一组同样经过编码的样本<em>k</em>0,<em>k</em>1,<em>k</em>2,…，这些样本充当字典中的键。假设在这组键中，只有一个键（记为<em>k</em>+ ）与查询向量<em>q</em>匹配。</p>
+<p>在衡量查询向量q和其他的键的相似度时使用对比损失函数InfoNCE</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411153259061.png" alt="image-20250411153259061"></p>
+<p>在无监督学习场景下，没有像监督学习那样预先标注好的类别标签，对比损失发挥着关键作用。它通过鼓励编码器网络将来自同一实例的查询（query）和键（key）映射到相似的特征空间，同时将来自不同实例的查询和键映射到不同的特征空间，以此来训练编码器网络。这样，编码器网络就能学习到数据的有效特征表示，为后续任务（如分类、检测等）奠定基础。</p>
+<h3 id="动量对比"><a href="#动量对比" class="headerlink" title="动量对比"></a>动量对比</h3><p>从上述角度来看，对比学习是一种在图像等高维连续输入上构建离散字典的方法。这里所说的字典具有<strong>动态性</strong>，体现在两个方面：其一，<strong>字典中的键是随机采样得到的</strong>；其二，<strong>在训练过程中，用于编码这些键的编码器也在不断变化</strong>。我们提出这样一个假设：一个能够涵盖丰富负样本的大字典有助于学习到良好的特征，并且在训练过程中，尽管字典键的编码器会不断变化，但应尽可能保持其一致性。基于这一动机，将介绍动量对比（Momentum Contrast，MoCo）方法。</p>
+<p><strong>将字典维护成一个数据样本队列</strong>。在之前的方法中对比学习常常被视为在高维连续输入上构建离散字典的过程，以往的方法在构建字典时字典大小往往受限于小批量数据的大小，而当把字典当成一个队列时，当前小批量数据的编码表示会被添加到队列中，同时最旧的小批量数据的编码表示会从队列中移除，这种方法会使得字典可以积累多个小批量数据的信息。</p>
+<h3 id="动量更新"><a href="#动量更新" class="headerlink" title="动量更新"></a>动量更新</h3><p>使用队列可以使字典变大，但同时也会导致反向传播更新key编码器变得棘手</p>
+<p>最简单的解决方法是将从查询编码器复制键编码器，忽略梯度问题，但效果不佳</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411172946171.png" alt="image-20250411172946171"></p>
+<p>在更新中，只有查询编码器的参数根据反向传播来更新，而键编码器的参数根据动量更新公式来进行调整</p>
+<p>其中m接近1，则证明键编码器的参数很大程度上会保留原有的信息，只有少部分被查询编码器更新</p>
+<p>实验发现，<strong>相对较大的动量值（如默认的(m &#x3D; 0.999) ）比小动量值（如(m &#x3D; 0.9) ）效果好得多</strong>。这表明在利用队列进行字典构建和对比学习时，让键编码器缓慢演变是核心要点。缓慢演变的键编码器能够更好地维护队列中键表示的一致性，从而提升模型在无监督视觉表征学习任务中的性能。如果动量值较小，键编码器变化相对较快，就难以保证不同小批量数据编码得到的键之间的一致性，导致模型性能下降。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411191442286.png" alt="image-20250411191442286"></p>
+<p>三种不同的更新策略：</p>
+<ul>
+<li>端到端：字典大小与mini-batch size严格相关，受限于GPU显存</li>
+<li>记忆库：库中信息的更新不符合一致性</li>
+<li>MoCo</li>
+</ul>
+<h3 id="前置任务"><a href="#前置任务" class="headerlink" title="前置任务"></a>前置任务</h3><p>正负样本：如果来自同一张图片的增强样本，则就是正样本对，否则是负样本对</p>
+<p>分别用编码器(f_{q})和(f_{k})对同一图像的不同增强 “视图” 进行编码，并通过对比损失优化编码器参数。如果 q 和 k 来自不同图像，对比损失的优化方向可能会偏离学习同一图像不同特征表示相似性的目标，导致模型难以准确学习到图像的有效特征表示。在文中所采用的方法里，会对同一幅图像进行随机数据增强操作，产生两个不同的随机 “视图”，<strong>一个 “视图” 用于生成 q，另一个 “视图” 用于生成 k</strong>。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411194009287.png" alt="image-20250411194009287"></p>
+<h3 id="技术细节"><a href="#技术细节" class="headerlink" title="技术细节"></a>技术细节</h3><p>采用resnet作为编码器，在全局平均池化后其最后一个全连接层会输出固定维度128的向量，在输出向量后会根据L2范数进行归一化处理，处理后的向量就作为查询或者键的表征。loss函数中的温度超参数 τ 设置为 0.07（参照文献 [61]） 。数据增强的设置：从随机调整大小后的图像中裁剪出 224×224 像素的区域，接着对其进行随机颜色抖动、随机水平翻转以及随机灰度转换操作，这些操作都可通过 PyTorch 的 torchvision 工具包来实现。</p>
+<p>单纯的使用BN会让学习表征的效果变差，所以突出新的BN策略</p>
+<p><strong>shuffling BN：</strong></p>
+<p>在训练时，使用对个GPU，对每个GPU上的样本独立进行BN操作，对于键编码器，在将当前小批量样本分配到各个GPU之前，打乱样本顺序，而查询编码器的小批量样本顺序则保持不变，这样做可以确保用于计算查询和其正样本键的批量统计信息来自两个不同的子集。</p>
+
+  <p><a class="classtest-link" href="/tags/ML/" rel="tag">ML</a> — 2025年5月22日</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/lovelysimon" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/s1m0nl0" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://stackoverflow.com/story/jay-an" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="StackOverflow">
+        <svg class="stackoverflow svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Stack Overflow</title><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg>
+      </a>
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
