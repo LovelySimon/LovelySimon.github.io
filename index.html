@@ -1,337 +1,1066 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
+<!DOCTYPE HTML>
+<html>
 <head>
-
-  <!-- Minima -->
-  <!-- Hexo theme created by @adisaktijrs -->
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
   
   <title>哥们废了</title>
-  
-  <link rel="canonical" href="http://example.com/">
+  <meta name="author" content="Simon An">
   
   <meta name="description" content="记录在NJUST学习和生活历程">
   
   
-  <meta name="keywords" content="深度学习,计算机视觉">
-  
-  <meta name="author" content="Simon An">
-  
-  
-  <meta property="og:image" content="http://example.com/images/thumbnail.jpg">
-  
-  
-  <meta property="og:site_name" content="哥们废了" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="哥们废了" />
-  
-  <meta property="og:description" content="记录在NJUST学习和生活历程">
-  
-  <meta property="og:url" content="http://example.com/" />
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="哥们废了">
-  
-  <meta name="twitter:description" content="记录在NJUST学习和生活历程">
-  
-  
-  
-  <meta name="twitter:image" content="http://example.com/images/thumbnail.jpg">
-  
-  
-  <meta name="twitter:url" content="http://example.com/" />
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Preload fonts
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  
-<link rel="stylesheet" href="/css/normalize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-<link rel="stylesheet" href="/css/skeleton.css">
+  <meta property="og:site_name" content="哥们废了"/>
 
   
-<link rel="stylesheet" href="/css/custom.css">
-
-  
-<link rel="stylesheet" href="/css/prism-dark.css">
-
-  
-<link rel="stylesheet" href="/css/prism-line-numbers.css">
-
-  <!-- User css -->
-  
-  
-<link rel="stylesheet" href="/css/user.css">
-
-  
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-
-  <!-- Custom Theme Color Style
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <style>
-  a:not(.icon) {
-    text-decoration-color: #0FA0CE;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 50%,
-      #0FA0CE 50%
-    );
-  }
-  blockquote {
-    border-left: 8px solid #0FA0CE;
-  }
-  .nanobar .bar {
-    background: #0FA0CE;
-  }
-  .button.button-primary:hover,
-  button.button-primary:hover,
-  input[type="submit"].button-primary:hover,
-  input[type="reset"].button-primary:hover,
-  input[type="button"].button-primary:hover,
-  .button.button-primary:focus,
-  button.button-primary:focus,
-  input[type="submit"].button-primary:focus,
-  input[type="reset"].button-primary:focus,
-  input[type="button"].button-primary:focus {
-    background-color: #0FA0CE;
-    border-color: #0FA0CE;
-  }
-  input[type="email"]:focus,
-  input[type="number"]:focus,
-  input[type="search"]:focus,
-  input[type="text"]:focus,
-  input[type="tel"]:focus,
-  input[type="url"]:focus,
-  input[type="password"]:focus,
-  textarea:focus,
-  select:focus {
-    border: 1px solid #0FA0CE;
-  }
-</style>
-
-  <!-- Google Analytics (With Privacy Settings On)
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta property="og:image" content=""/>
   
 
   
-  <script src="/js/pic.min.js" defer></script>
   
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
   
-  <script src="/js/search.min.js" defer></script>
-  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
 
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">哥们废了</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
   <div class="container">
-    <div class="row">
-      <div>
-
-        <div class="row">
-  <div class="two columns" style="max-width: 50px">
-    <h1 class="mt-2 mode">
-      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
-      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
-      <script >
-        if (localStorage.getItem('preferredTheme') == 'dark') {
-          setDarkMode(true)
-        }
-        function setDarkMode(isDark) {
-          var darkBtn = document.getElementById('darkBtn')
-          var lightBtn = document.getElementById('lightBtn')
-          if (isDark) {
-            lightBtn.style.display = "block"
-            darkBtn.style.display = "none"
-            localStorage.setItem('preferredTheme', 'dark');
-          } else {
-            lightBtn.style.display = "none"
-            darkBtn.style.display = "block"
-            localStorage.removeItem('preferredTheme');
-          }
-          document.body.classList.toggle("darkmode");
-        }
-      </script>
-    </h1>
-  </div>
-
-  <div class="six columns ml-1">
-    <h1 class="mt-2">
-      准备退学
-    </h1>
-  </div>
-
-  <div class="twelve columns">
-    <div class="row">
-      <div class="nine columns left">
-        <a href="/">Home</a>
-        
-        
-          
-            <a href="mailto:anlinjie87@gmail.com" target="_blank" class="ml">Email</a>
-          
-        
-      </div>
-    </div>
-    <hr style="margin-bottom: 2.6rem">
-  </div>
+  	<div class="content">
+    	 <div class="page-header logo">
+  <h1>Keep Going<span class="blink-fast">∎</span></h1>
 </div>
 
-        <div class="trans">
-          <div class="row">
-  <div class="column">
-    <!-- Main information, edit it on theme/_config.yml -->
-    <h2 class="mb-2">Simon An</h2>
-    <p>南京理工大学计算机专硕在读研究生</p>
-    <p>保存学习和生活的经历</p>
-  </div>
-</div>
+<div class="row page">
 
-<h3>Recent Posts</h3>
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
 
 
+		<i class="fa fa-heart blink-slow"></i>
+
+		Keep and carry on.
+
+</div>    
+
+		<div id="top_search"></div>
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->
 <div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2025/05/22/MoCo/" >MoCo</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2025-05-22  </div>
+		</div>
+	</div>
+	
 
-  <div class="three columns left lit">
-    <p class="bottom">2025年5月22日</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2025/05/22/MoCo/" >
-      
-        MoCo
-      
-    </a>
-  </div>
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="MoCo"><a href="#MoCo" class="headerlink" title="MoCo"></a>MoCo</h1><h3 id="前置知识：什么是对比学习"><a href="#前置知识：什么是对比学习" class="headerlink" title="前置知识：什么是对比学习"></a>前置知识：什么是对比学习</h3><p>将三个图输入到一个神经网络中得到对应的特征向量f1、f2、f3。 在特征空间中f1,f2接近，f1,f3疏远（相似类别接近，不同类别疏远），如果不明白可以先看一下Embedding。为什么要说这个呢？以最左边的猫的图片为例，我们对其进行简单变换（平移、旋转等）得到两个新图（当然这两张图片还是猫！！没有变成狗！！对吧？），这两张新图对应的特征向量，在特征空间中接近，或者说相似度很高。生成新图，通过编码器将它们转化成Embedding向量，训练使，接近，， 疏远这个过程就是对比学习是无监督，可以看出这个编码器是很关键的，它没有因为图片的变动，而把它编码成狗。这可以作为一个pretext，当我们拥有的数据中不带标签的数据要远远大于带标签的数据的时候，我们可以用不带标签的数据进行对比学习的一个初始编码器，此编码器已经掌握了数据中的一部分特性，可以实现聚类功能，然后在用带标签数据进行微调。</p>
+<ul>
+<li>数据增强</li>
+<li>特征编码器</li>
+<li>MLP层</li>
+<li>目标函数作用阶段，正样本是一个样本和增强样本，负样本是除此之外的所有样本</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们提出了用于无监督视觉表示学习的动量对比 (MoCo)。从对比学习[29]作为字典查找的角度来看，我们构建了一个带有队列和移动平均编码器的动态字典。这使我们能够动态构建一个庞大且一致的字典，以促进对比无监督学习。MoCo在ImageNet分类的通用线性协议下提供了具有竞争力的结果。更重要的是，MoCo学习的表示可以很好地转移到下游任务。在PASCAL VOC、COCO和其他数据集上的7个检测&#x2F;分割任务中，MoCo可以优于其有监督的预训练对应物，有时大大超过了它。这表明无监督表示学习和监督表示学习之间的差距在许多视觉任务中很大程度上是接近的。</p>
+<h2 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h2><p>在视觉领域，对比学习需要为样本生成字典，而encoder编码器的作用就是施行字典查找的角色，一个编码的序列应该和它对应的关键字相同而和其他的不同，这样的学习需要被表述为最小化对比损失，从这个角度来看我们应该建立符合以下条件的字典：</p>
+<ul>
+<li>庞大一致并且在训练中会持续更新</li>
+</ul>
+<p>把字典维护成一个数据样本队列：将当前小批量数据的编码表示入队，最旧的数据表示则出队。</p>
+<p>该队列将字典大小与小批量数据的大小解耦，从而使字典能够很大。、</p>
+<p>由于字典中的键来自前面的几个小批量数据，提出使用一个缓慢更新的键编码器（它是通过查询编码器基于动量的滑动平均来实现的），以保持一致性。</p>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p>自监督学习方法通常涉及两个方面：前置任务和损失函数</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><strong>Contrastive losses对比损失：</strong></p>
+<p>在表征空间中测量两个样本之间的相似性，不同于固定的类别标签，它的接近目标是不固定的，在训练期间目标会根据网络对数据的表征适时调整，例如在无监督学习的对比学习场景下，会从数据中选取不同样本，这些样本经过网络编码后形成的表征就用于动态确定对比损失中的目标。通过这种方式，对比损失能够更灵活地引导模型学习数据间的相似性和差异性，挖掘数据内在的特征表示。</p>
+<p><strong>Adversarial losses对抗损失：</strong></p>
+<p>衡量概率分布之间的差异</p>
+<h3 id="Pretext-Tasks-前置任务"><a href="#Pretext-Tasks-前置任务" class="headerlink" title="Pretext Tasks 前置任务"></a>Pretext Tasks 前置任务</h3><p>用于辅助模型学习数据特征的任务，虽然这些任务本身并非最终目的，但通过完成他们模型可以学到更有效的数据表示</p>
+<ul>
+<li>恢复受损输入的任务：在受损的输入中恢复原始数据，比如去噪自动编码器，它以带有噪声的图像作为输入，目标是去除噪声，还原出原始清晰的图像，在这个过程中，模型学习到图像的特征和结构信息；上下文自动编码器则是通过利用图像的上下文信息来恢复输入，在恢复过程中让模型理解图像不同部分之间的关系；跨通道自动编码器（如彩色化任务），以灰度图像为输入，生成对应的彩色图像，帮助模型学习颜色信息与图像内容之间的关联。</li>
+<li>生成伪标签的任务：通过对数据进行特定操作来生成伪标签，以此引导模型学习。对单个（“示例”）图像进行变换，根据变换前后的关系生成伪标签，让模型学习到图像在不同变换下的不变性特征；</li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="把对比学习当做字典查找方法"><a href="#把对比学习当做字典查找方法" class="headerlink" title="把对比学习当做字典查找方法"></a>把对比学习当做字典查找方法</h3><p> 在对比学习的场景下，我们考虑这样一种情况：有一个经过编码的查询向量<em>q</em>，以及一组同样经过编码的样本<em>k</em>0,<em>k</em>1,<em>k</em>2,…，这些样本充当字典中的键。假设在这组键中，只有一个键（记为<em>k</em>+ ）与查询向量<em>q</em>匹配。</p>
+<p>在衡量查询向量q和其他的键的相似度时使用对比损失函数InfoNCE</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411153259061.png" alt="image-20250411153259061"></p>
+<p>在无监督学习场景下，没有像监督学习那样预先标注好的类别标签，对比损失发挥着关键作用。它通过鼓励编码器网络将来自同一实例的查询（query）和键（key）映射到相似的特征空间，同时将来自不同实例的查询和键映射到不同的特征空间，以此来训练编码器网络。这样，编码器网络就能学习到数据的有效特征表示，为后续任务（如分类、检测等）奠定基础。</p>
+<h3 id="动量对比"><a href="#动量对比" class="headerlink" title="动量对比"></a>动量对比</h3><p>从上述角度来看，对比学习是一种在图像等高维连续输入上构建离散字典的方法。这里所说的字典具有<strong>动态性</strong>，体现在两个方面：其一，<strong>字典中的键是随机采样得到的</strong>；其二，<strong>在训练过程中，用于编码这些键的编码器也在不断变化</strong>。我们提出这样一个假设：一个能够涵盖丰富负样本的大字典有助于学习到良好的特征，并且在训练过程中，尽管字典键的编码器会不断变化，但应尽可能保持其一致性。基于这一动机，将介绍动量对比（Momentum Contrast，MoCo）方法。</p>
+<p><strong>将字典维护成一个数据样本队列</strong>。在之前的方法中对比学习常常被视为在高维连续输入上构建离散字典的过程，以往的方法在构建字典时字典大小往往受限于小批量数据的大小，而当把字典当成一个队列时，当前小批量数据的编码表示会被添加到队列中，同时最旧的小批量数据的编码表示会从队列中移除，这种方法会使得字典可以积累多个小批量数据的信息。</p>
+<h3 id="动量更新"><a href="#动量更新" class="headerlink" title="动量更新"></a>动量更新</h3><p>使用队列可以使字典变大，但同时也会导致反向传播更新key编码器变得棘手</p>
+<p>最简单的解决方法是将从查询编码器复制键编码器，忽略梯度问题，但效果不佳</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411172946171.png" alt="image-20250411172946171"></p>
+<p>在更新中，只有查询编码器的参数根据反向传播来更新，而键编码器的参数根据动量更新公式来进行调整</p>
+<p>其中m接近1，则证明键编码器的参数很大程度上会保留原有的信息，只有少部分被查询编码器更新</p>
+<p>实验发现，<strong>相对较大的动量值（如默认的(m &#x3D; 0.999) ）比小动量值（如(m &#x3D; 0.9) ）效果好得多</strong>。这表明在利用队列进行字典构建和对比学习时，让键编码器缓慢演变是核心要点。缓慢演变的键编码器能够更好地维护队列中键表示的一致性，从而提升模型在无监督视觉表征学习任务中的性能。如果动量值较小，键编码器变化相对较快，就难以保证不同小批量数据编码得到的键之间的一致性，导致模型性能下降。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411191442286.png" alt="image-20250411191442286"></p>
+<p>三种不同的更新策略：</p>
+<ul>
+<li>端到端：字典大小与mini-batch size严格相关，受限于GPU显存</li>
+<li>记忆库：库中信息的更新不符合一致性</li>
+<li>MoCo</li>
+</ul>
+<h3 id="前置任务"><a href="#前置任务" class="headerlink" title="前置任务"></a>前置任务</h3><p>正负样本：如果来自同一张图片的增强样本，则就是正样本对，否则是负样本对</p>
+<p>分别用编码器(f_{q})和(f_{k})对同一图像的不同增强 “视图” 进行编码，并通过对比损失优化编码器参数。如果 q 和 k 来自不同图像，对比损失的优化方向可能会偏离学习同一图像不同特征表示相似性的目标，导致模型难以准确学习到图像的有效特征表示。在文中所采用的方法里，会对同一幅图像进行随机数据增强操作，产生两个不同的随机 “视图”，<strong>一个 “视图” 用于生成 q，另一个 “视图” 用于生成 k</strong>。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250411194009287.png" alt="image-20250411194009287"></p>
+<h3 id="技术细节"><a href="#技术细节" class="headerlink" title="技术细节"></a>技术细节</h3><p>采用resnet作为编码器，在全局平均池化后其最后一个全连接层会输出固定维度128的向量，在输出向量后会根据L2范数进行归一化处理，处理后的向量就作为查询或者键的表征。loss函数中的温度超参数 τ 设置为 0.07（参照文献 [61]） 。数据增强的设置：从随机调整大小后的图像中裁剪出 224×224 像素的区域，接着对其进行随机颜色抖动、随机水平翻转以及随机灰度转换操作，这些操作都可通过 PyTorch 的 torchvision 工具包来实现。</p>
+<p>单纯的使用BN会让学习表征的效果变差，所以突出新的BN策略</p>
+<p><strong>shuffling BN：</strong></p>
+<p>在训练时，使用对个GPU，对每个GPU上的样本独立进行BN操作，对于键编码器，在将当前小批量样本分配到各个GPU之前，打乱样本顺序，而查询编码器的小批量样本顺序则保持不变，这样做可以确保用于计算查询和其正样本键的批量统计信息来自两个不同的子集。</p>
+
+	
+	</div>
+  <a type="button" href="/2025/05/22/MoCo/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
+		
+			
+	
+	<!-- display as entry -->
 <div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2025/05/22/SegNeXt/" >SegNeXt:Rethinking Convolutional Attention Design for Semantic Segmentation</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2025-05-22  </div>
+		</div>
+	</div>
+	
 
-  <div class="three columns left lit">
-    <p class="bottom">2025年5月22日</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2025/05/22/SegNeXt/" >
-      
-        SegNeXt:Rethinking Convolutional Attention Design for Semantic Segmentation
-      
-    </a>
-  </div>
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="SegNeXt-Rethinking-Convolutional-Attention-Design-for-Semantic-Segmentation"><a href="#SegNeXt-Rethinking-Convolutional-Attention-Design-for-Semantic-Segmentation" class="headerlink" title="SegNeXt: Rethinking Convolutional Attention Design for Semantic Segmentation"></a>SegNeXt: Rethinking Convolutional Attention Design for Semantic Segmentation</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>We present SegNeXt, a simple convolutional network architecture for semantic segmentation. Recent transformer-based models have dominated the field of semantic segmentation due to the efficiency of self-attention in encoding spatial information. In this paper, we show that convolutional attention is a more efficient and effective way to encode contextual information than the self-attention mechanism in transformers. By re-examining the characteristics owned by successful segmentation models, we discover several key components leading to the performance improvement of segmentation models. This motivates us to design a novel convolutional attention network that uses cheap convolutional operations. Without bells and whistles, our SegNeXt significantly improves the performance of previous state-of-the-art methods on popular benchmarks, including ADE20K, Cityscapes, COCO-Stuff, Pascal VOC, Pascal Context, and iSAID. Notably, SegNeXt outperforms EfficientNet-L2 w&#x2F; NAS-FPN and achieves 90.6% mIoU on the Pascal VOC 2012 test leaderboard using only 1&#x2F;10 parameters of it. On average, SegNeXt achieves about 2.0% mIoU improvements compared to the state-of-the-art methods on the ADE20K datasets with the same or fewer computations. Code is available.</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="卷积encoder"><a href="#卷积encoder" class="headerlink" title="卷积encoder"></a>卷积encoder</h3><p>使用MSCA来替代原本的注意力机制encoder，主要分为三个部分：</p>
+<ul>
+<li>深度卷积来提取局部信息</li>
+<li>多分支深度卷积来捕获多尺度上下文</li>
+<li>1X1卷积来建模不同通道的关系</li>
+</ul>
+<p>1x1卷积的输出被当作注意力权重来直接和输入相乘<br><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250409164933938.png" alt="image-20250409164933938"></p>
+<p>Att和模型的输入进行元素级别的相乘</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250409170139279.png" alt="image-20250409170139279"></p>
+<p>将一系列的块进行堆叠就形成了论文提出的卷积编码器MSCAN</p>
+<p>采用等级制度结构，包含了四个递减的空间分辨率，H&#x2F;4 × W&#x2F;4 , H&#x2F;8 × W&#x2F;8 , H&#x2F;16 × W&#x2F;16 和 H&#x2F;32 × W&#x2F;32</p>
+<p>每个阶段都包含了一个下采样模块</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250409171938063.png" alt="image-20250409171938063"></p>
+<h3 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h3><p>三种解码器可以选择：</p>
+<ul>
+<li>segformer 解码器，纯MLP</li>
+<li>直接输入到解码头</li>
+<li>从最后三个阶段聚合特征，并使用轻量级Hamburger[21]进一步建模全局上下文。结合我们强大的卷积编码器，我们发现使用轻量级解码器可以提高性能计算效率。这也是论文所采用的解码器模式</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2025/05/22/SegNeXt/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
+		
+			
+	
+	<!-- display as entry -->
 <div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2025/01/22/操作系统学习历程/" >操作系统学习历程</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2025-01-22  </div>
+		</div>
+	</div>
+	
 
-  <div class="three columns left lit">
-    <p class="bottom">2025年1月22日</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2025/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/" >
-      
-        操作系统学习历程
-      
-    </a>
-  </div>
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><h2 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h2><p>计算机硬件：极简的公理系统（导线，逻辑门，时钟，触发器）就能够支持非常复杂的数字系统设计</p>
+<p>硬件和软件的中间层，需要了解全部但不要细究全部</p>
+<ul>
+<li>对单机作出抽象</li>
+<li>支撑多个程序执行</li>
+</ul>
+<h2 id="从应用角度看操作系统"><a href="#从应用角度看操作系统" class="headerlink" title="从应用角度看操作系统"></a>从应用角度看操作系统</h2><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250117155511892.png" alt="image-20250117155511892"></p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250117164939996.png" alt="image-20250117164939996"></p>
+<p>可以对如图所示的文件进行gcc的编译得到想要的exe可执行文件，也可以使用gcc -c来先进行编译得到.o文件在进行链接</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250117165106573.png" alt="image-20250117165106573"></p>
+<p><strong>在计算机中，我们所有的指令都是计算和move指令，并没有关闭程序和关闭计算机的指令，那么这个过程是谁在发挥作用？</strong></p>
+<p>答案是操作系统。</p>
+<p>借助操作系统来实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movq $SYS_exit , %rax #exit(</span><br><span class="line">movq $1,         %rdi # status=1</span><br><span class="line">syscall               #);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将系统调用的参数放到寄存器中</li>
+<li>执行sys call，操作系统接管程序，操作系统可以任意改变程序状态（甚至终止程序）</li>
+</ul>
+<p><strong>应用程序&#x3D;计算+操作系统API</strong></p>
+<p>举例说明：</p>
+<ul>
+<li><p>窗口管理器：能直接管理屏幕设备</p>
+<p>​			能够和其他进程通信</p>
+</li>
+<li><p>任务管理器：能访问操作系统提供的进程对象</p>
+</li>
+<li><p>杀毒软件：文件静态扫描（read），主动防御（ptrace）</p>
+</li>
+</ul>
+<p><strong>操作系统的职责：提供令应用程序舒适的抽象（对象+API）</strong></p>
+<h3 id="理解高级语言程序"><a href="#理解高级语言程序" class="headerlink" title="理解高级语言程序"></a>理解高级语言程序</h3><ul>
+<li><p>C语言代码经过编译之后得到二进制文件，执行二进制文件就可以依次执行指令，每次执行一条“语句”</p>
+</li>
+<li><p>在使用gdb调试代码的时候可以发现，c语言文件的执行也是一种状态机，那我们可以试着使用c语言的源代码来模拟状态机的运行，也就是将代码写成<strong>“simpleC”</strong></p>
+</li>
+</ul>
+<p><strong>状态机是拥有严格数学定义的对象，这意味着可以用定义的方式写出来</strong></p>
+<ul>
+<li>状态就是各种栈帧和全局变量的组合。</li>
+<li>初始状态下仅有一个栈帧（main函数栈帧），且全局变量均为初始值（PC&#x3D;0）</li>
+<li>状态迁移：执行栈帧PC</li>
+</ul>
+<p>试图把c代码改写成simpleC：</p>
+<ul>
+<li>每一条语句至多一次运算</li>
+<li>条件语句中不包含运算</li>
+</ul>
+<h3 id="编译器与编译优化"><a href="#编译器与编译优化" class="headerlink" title="编译器与编译优化"></a>编译器与编译优化</h3><ul>
+<li>编译器的输入：高级c语言代码</li>
+<li>编译器的输出：汇编代码（指令序列）</li>
+<li>编译器就是状态机之间的翻译器</li>
+</ul>
+<p><strong>simpleC翻译</strong>：</p>
+<ul>
+<li>运算：把操作数load到寄存器，执行运算，store写回结果</li>
+<li>分支&#x2F;循环：使用条件跳转分别执行代码</li>
+<li>函数调用：专门留一个寄存器给栈（SP，stackPointer），将stackframe的信息保存到内存中</li>
+</ul>
+<p><strong>编译优化三板斧</strong>：</p>
+<ul>
+<li>函数内联： 将函数调用替换为函数体本身的内容</li>
+<li>常量传播：在编译时计算常量表达式的值并替换</li>
+<li>死代码消除：删除永远不会执行到的代码</li>
+</ul>
+<p><strong>那么给定两个程序A和B，编译器到底允不允许把A编译成B？</strong></p>
+<ul>
+<li>首先要看在syscall调用后两个程序的输出序列是否一致，如果一致则可以编译。</li>
+<li>系统调用是使程序计算结果可见的唯一方法，不改变语义&#x3D;不改变可见结果，即如果两个状态机生成的所有syscall序列是完全一致的，则该优化就是允许的。</li>
+</ul>
+<p><strong>C语言代码中不可优化的部分</strong>：</p>
+<ul>
+<li><p>External function calls外部函数调用（链接时才能确定到底是什么代码）</p>
+<ul>
+<li>未知的代码可能包含系统调用</li>
+<li>因此不可删除，移除循环等，且要保证参数传递完全一致</li>
+</ul>
+</li>
+<li><p>编译器提供的不可优化标注</p>
+</li>
+</ul>
+<h2 id="从硬件视角理解操作系统"><a href="#从硬件视角理解操作系统" class="headerlink" title="从硬件视角理解操作系统"></a>从硬件视角理解操作系统</h2><h3 id="计算机系统的状态机模型"><a href="#计算机系统的状态机模型" class="headerlink" title="计算机系统的状态机模型"></a>计算机系统的状态机模型</h3><ul>
+<li>状态：内存，寄存器的数值</li>
+</ul>
+<p>​	寄存器，内存</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CPUstate</span>&#123;</span></span><br><span class="line">    <span class="type">uint32_t</span> regs[<span class="number">32</span>],csrs[CSR_COUNT];</span><br><span class="line">    <span class="type">uint8_t</span> *mem;</span><br><span class="line">    <span class="type">uint32_t</span> mem_offset,mem_size;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>​	还有外部世界的态：</p>
+<ol>
+<li>​	设备上的寄存器</li>
+<li>​	中断指令Interrput</li>
+<li>​	客观存在但计算机系统不能直接访问，进程只能通过syscall访问外部输入</li>
+</ol>
+<ul>
+<li>初始状态：由系统设计者规定（CPU Reset）</li>
+<li>状态迁移：从PC取指令执行</li>
+</ul>
+<h3 id="计算机系统中的固件"><a href="#计算机系统中的固件" class="headerlink" title="计算机系统中的固件"></a>计算机系统中的固件</h3><p>reset是计算机硬件和系统程序员的第一个接口，如果想要在裸机上面进行编程，只需要做一个电路并在适当的内存放上适当的代码，只要cpu在reset状态，就执行相应的某些代码，此时就可以对cpu进行控制。</p>
+<p><strong>什么是固件？</strong></p>
+<ul>
+<li><p>固件就是厂商在出厂时放置到计算机系统里的代码</p>
+<ul>
+<li>之所以称之为固件是因为早期时rom，如果想要更新升级则需要换芯片</li>
+</ul>
+</li>
+<li><p>固件的功能：</p>
+<ul>
+<li>运行程序前的计算机系统配置</li>
+<li>CPU电压，内存时序，接口开关等</li>
+</ul>
+</li>
+<li><p>不严格的说，加载操作系统</p>
+<ul>
+<li>加载存储设备上的引导程序</li>
+</ul>
+</li>
+<li><p>可以成为一个小的操作系统，在CPU reset后初始化硬件，对接操作系统Boot Loader</p>
+</li>
+<li><p>又称为BIOS(basic io system)</p>
+</li>
+<li><p>现在有了UEFI(undefined extensible firmware interface)固件提供更丰富的支持如指纹锁蓝牙键盘等</p>
+</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2025/01/22/操作系统学习历程/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
+		
+			
+	
+	<!-- display as entry -->
 <div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2024/11/04/算法笔记/" >算法每日一题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-11-04  </div>
+		</div>
+	</div>
+	
 
-  <div class="three columns left lit">
-    <p class="bottom">2024年11月4日</p>
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Tarjan算法（寻找强连通分量）"><a href="#Tarjan算法（寻找强连通分量）" class="headerlink" title="Tarjan算法（寻找强连通分量）"></a>Tarjan算法（寻找强连通分量）</h2><p>  铺垫：连通图的两种DFS遍历方式， 在tarjan算法中采用方式2来遍历顶点<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20240911155905523.png" alt="image-20240911155905523"></p>
+<p> 顶点X（i,j）其中</p>
+<p>i：DFS中x点被访问的时间点</p>
+<p>j: x通过可以回溯到的最早时间点</p>
+<p> <img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20240911162218892.png" alt="image-20240911162218892"></p>
+<h3 id="1129-颜色交替的最短路径"><a href="#1129-颜色交替的最短路径" class="headerlink" title="1129 颜色交替的最短路径"></a>1129 颜色交替的最短路径</h3><p>给定一个整数 <code>n</code>，即有向图中的节点数，其中节点标记为 <code>0</code> 到 <code>n - 1</code>。图中的每条边为红色或者蓝色，并且可能存在自环或平行边。</p>
+<p>给定两个数组 <code>redEdges</code> 和 <code>blueEdges</code>，其中：</p>
+<ul>
+<li><code>redEdges[i] = [ai, bi]</code> 表示图中存在一条从节点 <code>ai</code> 到节点 <code>bi</code> 的红色有向边，</li>
+<li><code>blueEdges[j] = [uj, vj]</code> 表示图中存在一条从节点 <code>uj</code> 到节点 <code>vj</code> 的蓝色有向边。</li>
+</ul>
+<p>返回长度为 <code>n</code> 的数组 <code>answer</code>，其中 <code>answer[X]</code> 是从节点 <code>0</code> 到节点 <code>X</code> 的红色边和蓝色边交替出现的最短路径的长度。如果不存在这样的路径，那么 <code>answer[x] = -1</code>。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3, red_edges = [[0,1],[1,2]], blue_edges = []</span><br><span class="line">输出：[0,1,-1]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3, red_edges = [[0,1]], blue_edges = [[2,1]]</span><br><span class="line">输出：[0,1,-1]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 100</code></li>
+<li><code>0 &lt;= redEdges.length, blueEdges.length &lt;= 400</code></li>
+<li><code>redEdges[i].length == blueEdges[j].length == 2</code></li>
+<li><code>0 &lt;= ai, bi, uj, vj &lt; n</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">shortestAlternatingPaths</span>(<span class="params">self, n, redEdges, blueEdges</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :type redEdges: List[List[int]]</span></span><br><span class="line"><span class="string">        :type blueEdges: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        e=[[] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> redEdges:</span><br><span class="line">            e[x].append((y,<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> blueEdges:</span><br><span class="line">            e[x].append((y,<span class="number">1</span>))</span><br><span class="line">        </span><br><span class="line">        ans=[-<span class="number">1</span>]*n</span><br><span class="line">        vis=&#123;(<span class="number">0</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>)&#125;</span><br><span class="line">        q=[(<span class="number">0</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>)]</span><br><span class="line">        distance=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            tmp=q</span><br><span class="line">            q=[]</span><br><span class="line">            <span class="keyword">for</span> x,y <span class="keyword">in</span> tmp:</span><br><span class="line">                <span class="keyword">if</span> ans[x]==-<span class="number">1</span>:</span><br><span class="line">                    ans[x]=distance</span><br><span class="line">                <span class="keyword">for</span> p <span class="keyword">in</span> e[x]:</span><br><span class="line">                    <span class="keyword">if</span> p[<span class="number">1</span>]!=y <span class="keyword">and</span> p <span class="keyword">not</span> <span class="keyword">in</span> vis:</span><br><span class="line">                        vis.add(p)</span><br><span class="line">                        q.append(p)</span><br><span class="line">            distance+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><em>解题思路：在路径长度都为一情况下，可以用广度优先遍历一遍便是到各个点的最短路径</em></p>
+<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><h3 id="560-和为k的数组个数"><a href="#560-和为k的数组个数" class="headerlink" title="560.和为k的数组个数"></a>560.和为k的数组个数</h3><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你统计并返回 <em>该数组中和为 <code>k</code> 的子数组的个数</em> 。</p>
+<p>子数组是数组中元素的连续非空序列。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,1], k = 2</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3], k = 3</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><p><code>1 &lt;= nums.length &lt;= 2 * 104</code></p>
+</li>
+<li><p><code>-1000 &lt;= nums[i] &lt;= 1000</code></p>
+</li>
+<li><p><code>-107 &lt;= k &lt;= 107</code></p>
+<p>解题思路：</p>
+<p>用map映射前缀和值和出现的次数</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; mp;</span><br><span class="line">        mp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>, pre = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x:nums) &#123;</span><br><span class="line">            pre += x;</span><br><span class="line">            <span class="keyword">if</span> (mp.<span class="built_in">find</span>(pre - k) != mp.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                count += mp[pre - k];</span><br><span class="line">            &#125;</span><br><span class="line">            mp[pre]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="238-除自身以外数组的乘积"><a href="#238-除自身以外数组的乘积" class="headerlink" title="238.除自身以外数组的乘积"></a>238.除自身以外数组的乘积</h3><p>给你一个整数数组 <code>nums</code>，返回 数组 <code>answer</code> ，其中 <code>answer[i]</code> 等于 <code>nums</code> 中除 <code>nums[i]</code> 之外其余各元素的乘积 。</p>
+<p>题目数据 <strong>保证</strong> 数组 <code>nums</code>之中任意元素的全部前缀元素和后缀的乘积都在 <strong>32 位</strong> 整数范围内。</p>
+<p>请 <strong>不要使用除法，</strong>且在 <code>O(n)</code> 时间复杂度内完成此题。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,2,3,4]</span><br><span class="line">输出: [24,12,8,6]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [-1,1,0,-3,3]</span><br><span class="line">输出: [0,0,9,0,0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 105</code></li>
+<li><code>-30 &lt;= nums[i] &lt;= 30</code></li>
+<li><strong>保证</strong> 数组 <code>nums</code>之中任意元素的全部前缀元素和后缀的乘积都在 <strong>32 位</strong> 整数范围内</li>
+</ul>
+<p><strong>进阶：</strong>你可以在 <code>O(1)</code> 的额外空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组 <strong>不被视为</strong> 额外空间。）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;<span class="built_in">int</span>&gt; productExceptSelf(vector&lt;<span class="built_in">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">int</span> l=nums.size();</span><br><span class="line">        vector&lt;<span class="built_in">int</span>&gt; L(l,<span class="number">0</span>),R(l,<span class="number">0</span>);</span><br><span class="line">        L[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;l;i++)&#123;</span><br><span class="line">             L[i]=L[i-<span class="number">1</span>]*nums[i-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        R[l-<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i=l-<span class="number">2</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            R[i]=R[i+<span class="number">1</span>]*nums[i+<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="built_in">int</span>&gt;ans(l,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;l;i++)&#123;</span><br><span class="line">            ans[i]=L[i]*R[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><p>在C++中，priority_queue是一个容器适配器，它提供了常数时间的最大元素查找。它通常实现为堆。堆是一种数据结构，其中最大（或最小）元素始终位于顶部。priority_queue是一个模板类，定义在头文件中。它有三个模板参数：元素类型、容器类型和比较函数类型（可选）。默认情况下，它使用std::vector作为其底层容器 。</p>
+<h3 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239. 滑动窗口最大值"></a>239. 滑动窗口最大值</h3><p>给你一个整数数组 <code>nums</code>，有一个大小为 <code>k</code> 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 <code>k</code> 个数字。滑动窗口每次只向右移动一位。</p>
+<p>返回 <em>滑动窗口中的最大值</em> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,3,-1,-3,5,3,6,7], k = 3</span><br><span class="line">输出：[3,3,5,5,6,7]</span><br><span class="line">解释：</span><br><span class="line">滑动窗口的位置                最大值</span><br><span class="line">---------------               -----</span><br><span class="line">[1  3  -1] -3  5  3  6  7       3</span><br><span class="line"> 1 [3  -1  -3] 5  3  6  7       3</span><br><span class="line"> 1  3 [-1  -3  5] 3  6  7       5</span><br><span class="line"> 1  3  -1 [-3  5  3] 6  7       5</span><br><span class="line"> 1  3  -1  -3 [5  3  6] 7       6</span><br><span class="line"> 1  3  -1  -3  5 [3  6  7]      7</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1], k = 1</span><br><span class="line">输出：[1]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 105</code></li>
+<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
+<li><code>1 &lt;= k &lt;= nums.length</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        priority_queue&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; ++i) &#123;</span><br><span class="line">            q.<span class="built_in">emplace</span>(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans = &#123;q.<span class="built_in">top</span>().first&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = k; i &lt; n; ++i) &#123;</span><br><span class="line">            q.<span class="built_in">emplace</span>(nums[i], i);</span><br><span class="line">            <span class="keyword">while</span> (q.<span class="built_in">top</span>().second &lt;= i - k) &#123;</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(q.<span class="built_in">top</span>().first);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="53-最大子数列和"><a href="#53-最大子数列和" class="headerlink" title="53.最大子数列和"></a>53.最大子数列和</h3><p>给你一个整数数组 <code>nums</code> ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p><strong>子数组</strong></p>
+<p>是数组中的一个连续部分。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [-2,1,-3,4,-1,2,1,-5,4]</span><br><span class="line">输出：6</span><br><span class="line">解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [5,4,-1,7,8]</span><br><span class="line">输出：23</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 105</code></li>
+<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int pre = 0, maxAns = nums[0];</span><br><span class="line">        for (const auto &amp;x: nums) &#123;</span><br><span class="line">            pre = max(pre + x, x);</span><br><span class="line">            maxAns = max(maxAns, pre);</span><br><span class="line">        &#125;</span><br><span class="line">        return maxAns;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>代码</p>
+<p>测试用例</p>
+<p>测试结果</p>
+<p>测试结果</p>
+<h3 id="56-合并区间"><a href="#56-合并区间" class="headerlink" title="56.合并区间"></a>56.合并区间</h3><p>以数组 <code>intervals</code> 表示若干个区间的集合，其中单个区间为 <code>intervals[i] = [starti, endi]</code> 。请你合并所有重叠的区间，并返回 <em>一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间</em> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：intervals = [[1,3],[2,6],[8,10],[15,18]]</span><br><span class="line">输出：[[1,6],[8,10],[15,18]]</span><br><span class="line">解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：intervals = [[1,4],[4,5]]</span><br><span class="line">输出：[[1,5]]</span><br><span class="line">解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。</span><br></pre></td></tr></table></figure>
+
+<p> 思路：先对vector进行排序，再根据题意插入</p>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= intervals.length &lt;= 104</code></li>
+<li><code>intervals[i].length == 2</code></li>
+<li><code>0 &lt;= starti &lt;= endi &lt;= 104</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">merge</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals) &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.<span class="built_in">size</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; merged;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="type">int</span> L = intervals[i][<span class="number">0</span>], R = intervals[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (!merged.<span class="built_in">size</span>() || merged.<span class="built_in">back</span>()[<span class="number">1</span>] &lt; L) &#123;</span><br><span class="line">                merged.<span class="built_in">push_back</span>(&#123;L, R&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                merged.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(merged.<span class="built_in">back</span>()[<span class="number">1</span>], R);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> merged;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><h3 id="234-回文列表"><a href="#234-回文列表" class="headerlink" title="234.回文列表"></a>234.回文列表</h3><p>给你一个单链表的头节点 <code>head</code> ，请你判断该链表是否为</p>
+<p>回文链表</p>
+<p>。如果是，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/pal1linked-list.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,2,1]</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/pal2linked-list.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2]</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>链表中节点数目在范围<code>[1, 105]</code> 内</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+</ul>
+<p><strong>进阶：</strong>你能否用 <code>O(n)</code> 时间复杂度和 <code>O(1)</code> 空间复杂度解决此题？</p>
+<p>尝试用O（1）的空间复杂度进行解答</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">bool</span> <span class="title function_">isPalindrome</span><span class="params">(ListNode* head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == nullptr) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 找到前半部分链表的尾节点并反转后半部分链表</span></span><br><span class="line">        ListNode* firstHalfEnd = endOfFirstHalf(head);</span><br><span class="line">        ListNode* secondHalfStart = reverseList(firstHalfEnd-&gt;next);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断是否回文</span></span><br><span class="line">        ListNode* p1 = head;</span><br><span class="line">        ListNode* p2 = secondHalfStart;</span><br><span class="line">        <span class="type">bool</span> result = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (result &amp;&amp; p2 != nullptr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1-&gt;val != p2-&gt;val) &#123;</span><br><span class="line">                result = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;        </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 还原链表并返回结果</span></span><br><span class="line">        firstHalfEnd-&gt;next = reverseList(secondHalfStart);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode* <span class="title function_">reverseList</span><span class="params">(ListNode* head)</span> &#123;</span><br><span class="line">        ListNode* prev = nullptr;</span><br><span class="line">        ListNode* curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr != nullptr) &#123;</span><br><span class="line">            ListNode* nextTemp = curr-&gt;next;</span><br><span class="line">            curr-&gt;next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = nextTemp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode* <span class="title function_">endOfFirstHalf</span><span class="params">(ListNode* head)</span> &#123;</span><br><span class="line">        ListNode* fast = head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        <span class="keyword">while</span> (fast-&gt;next != nullptr &amp;&amp; fast-&gt;next-&gt;next != nullptr) &#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;     <span class="comment">//快慢指针，慢指针一次移动一步，快指针一次移动两步</span></span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+	
+	</div>
+  <a type="button" href="/2024/11/04/算法笔记/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2024/10/23/AdvancedMachineLearning结课报告专用/" >AdvancedMachineLearning结课报告专用</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-10-23  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="海森矩阵"><a href="#海森矩阵" class="headerlink" title="海森矩阵"></a>海森矩阵</h3><p>是一个多元函数的二阶偏导数构成的方阵，<strong>描述了函数的局部曲率</strong>。在工程实际问题的优化设计中，所列的目标函数往往很复杂，为了使问题简化，常常将目标函数在某点邻域展开成泰勒多项式来逼近原函数，此时函数在某点泰勒展开式的矩阵形式中会涉及到黑塞矩阵。</p>
+<p>对于一个函数</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024095230966.png" alt="image-20241024095230966" style="zoom: 50%;" />
+
+<p>如果f的所有二阶导数都存在，那么f的海森矩阵为：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024095330522.png" alt="image-20241024095330522" style="zoom:50%;" />
+
+<p>将二元函数的泰勒展开式推广到多元函数，则在一点处的泰勒展开的矩阵形式为：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024100815506.png" alt="image-20241024100815506" style="zoom:50%;" />
+
+<p>其中<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024101048882.png" alt="image-20241024101048882" style="zoom:50%;" />是函数在X0点的梯度，G(X0)就是海森矩阵。</p>
+<p>海森矩阵是由目标函数在x点处的二阶偏导数组成的n*n阶对称矩阵</p>
+<ul>
+<li>如果海森矩阵是一个正定矩阵，则临界点是一个局部极小值</li>
+<li>如果海森矩阵是一个负定矩阵，则临界点是一个局部极大值</li>
+<li>如果是不定矩阵，则临界点处不是极值</li>
+</ul>
+<h3 id="牛顿法优化问题"><a href="#牛顿法优化问题" class="headerlink" title="牛顿法优化问题"></a>牛顿法优化问题</h3><p>牛顿法的基本思想是利用迭代点Xk处的一阶导数(梯度)和二阶导数(Hessen矩阵)对目标函数进行二次函数近似，然后把二次模型的极小点作为新的迭代点，并不断重复这一过程，直至求得满足精度的近似极小值。牛顿法的速度相当快，而且能高度逼近最优值。</p>
+<p>将一个需要求解的损失函数函数f(x)进行泰勒展开到二阶，得到</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024104750653.png" alt="image-20241024104750653" style="zoom:50%;" />
+
+<p>对上式求关于x的导数并令其等于0</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024104853712.png" alt="image-20241024104853712" style="zoom:50%;" />
+
+<p>那么求得极值点的x坐标为<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241024104946040.png" alt="image-20241024104946040"></p>
+<p>这就是牛顿法的更新公式</p>
+<p>牛顿法的精髓就是二阶收敛，不仅利用了损失函数的一阶偏导数，也用到了损失函数的二阶偏导数，即梯度<strong>变化的趋势</strong>，因此比梯度下降法更快的确定合适的搜索方向，具有二阶收敛速度。</p>
+<h3 id="牛顿法的缺点："><a href="#牛顿法的缺点：" class="headerlink" title="牛顿法的缺点："></a>牛顿法的缺点：</h3><ul>
+<li>计算复杂</li>
+<li>对函数有较为严格的要求，必须具有连续的一阶和二阶偏导数，海森矩阵必须是正定的</li>
+</ul>
+<h2 id="LBFGS优化算法"><a href="#LBFGS优化算法" class="headerlink" title="LBFGS优化算法"></a>LBFGS优化算法</h2><p>在一些经典的优化算法中，比如梯度下降，SGD，Adam等都是在一阶法的基础上进行改进，加快收敛的速率。而牛顿法则是利用二阶法，在收敛速度上远快于一阶，但如果目标函数非凸时，二阶法可能收敛到鞍点。针对二阶法存在的问题提出了BFGS和低存储的LBFGS方法</p>
+
+	
+	</div>
+  <a type="button" href="/2024/10/23/AdvancedMachineLearning结课报告专用/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2024/10/23/决策树模型/" >决策树模型</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-10-23  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<blockquote>
+<p>斯坦福吴恩达2022机器学习</p>
+</blockquote>
+<h2 id="简单的决策树模型"><a href="#简单的决策树模型" class="headerlink" title="简单的决策树模型"></a>简单的决策树模型</h2><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023140523587.png" alt="image-20241023140523587" style="zoom:50%;" />
+
+<p>类似于完全二叉树，有根节点和叶节点</p>
+<p>模型建立的两个关键点：</p>
+<ul>
+<li>如何决定分割的特征？</li>
+<li>如何判断叶节点的分类结果好坏？</li>
+</ul>
+<h3 id="纯度测量"><a href="#纯度测量" class="headerlink" title="纯度测量"></a>纯度测量</h3><p>用熵来作为纯度的度量</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144121398.png" alt="image-20241023144121398" style="zoom: 50%;" />
+
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144347508.png" alt="image-20241023144347508" style="zoom:50%;" />
+
+<p>当结点中的样本全为猫时，p1&#x3D;1，此时熵的值为0，当样本中全为狗时同理</p>
+<p>当结点中的样本为一半猫一半狗时，p1&#x3D;0.5，此时熵最高为1</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023144944385.png" alt="image-20241023144944385" style="zoom:50%;" />
+
+<p>在p&#x3D;0的情形中，log(0)是无法计算的，那么我们需要提前约定0log(0)&#x3D;0，才能正确计算熵</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023145116195.png" alt="image-20241023145116195" style="zoom:33%;" />
+
+<h3 id="选择分离的特征"><a href="#选择分离的特征" class="headerlink" title="选择分离的特征"></a>选择分离的特征</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023145853878.png" alt="image-20241023145853878" style="zoom:50%;" />
+
+<p>在上图中，每个特征筛选出来的分支都有各自的纯度熵，那么如何根据这些熵来判断哪个特征分类情况最好呢？我们使用每个特征的熵的加权平均来作为评估方式。</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023151127603.png" alt="image-20241023151127603" style="zoom: 50%;" />
+
+<p>在耳朵形状这一特征中，五个样本被分到了立耳，五个样本被分到了塌耳，那么则可通过上图公式1来进行加权平均计算出式子2</p>
+<p>根节点的熵为H(5&#x2F;10)&#x3D;1，因为根节点在用特征分类前是十个样本，其中五个样本是猫。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023151728440.png" alt="image-20241023151728440"></p>
+<p>最后的评估指标等于根节点的熵减去式子2得到熵的减少，即拆分信息增益，分类特征2和3同理，选择熵的减少量最大的特征。</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241023190739340.png" alt="image-20241023190739340"></p>
+<h3 id="随机森林算法"><a href="#随机森林算法" class="headerlink" title="随机森林算法"></a>随机森林算法</h3><p>有随机抽样的样本来构建不同的树构成森林</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241102153124412.png" alt="image-20241102153124412"></p>
+<p>For b&#x3D;1 to B:</p>
+<p>​	Use sampling with replacement to create a new training set of size m Train a decision tree on the new dataset</p>
+<h3 id="信息增熵"><a href="#信息增熵" class="headerlink" title="信息增熵"></a>信息增熵</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104143614684.png" alt="image-20241104143614684" style="zoom:50%;" />信息熵的计算公式</p>
+<p>pk为当前样本集合D中第k类样本所占的比例</p>
+<p>信息熵的值越小则D的纯度越高</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104144112122.png" alt="image-20241104144112122" style="zoom:50%;" />
+
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104144006739.png" alt="image-20241104144006739" style="zoom:50%;" />
+
+<p>信息增益越大，则样本在该属性下的纯度提升越大，属性选择更好</p>
+<p>信息增益准则对取值较多的属性有所偏好，仅仅采用增益来选取合适的属性会导致决策树的泛化能力很差</p>
+<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104145551003.png" alt="image-20241104145551003" style="zoom:50%;" />
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104145716126.png" alt="image-20241104145716126" style="zoom:50%;" />为属性a的固有值</p>
+<p>属性a的取值数目越多则固有值越大</p>
+<p>增益率对取值可能较少的属性有所偏好，在C4.5算法中并不是直接取增益率最大的候选划分属性，而是使用了启发式：先从候选属性中选择信息增益高于平均水平的属性集合，再从该集合中选择增益率最高的属性</p>
+<h3 id="CART决策树"><a href="#CART决策树" class="headerlink" title="CART决策树"></a>CART决策树</h3><p>classification and regression tree 分类和回归都可用</p>
+<p>使用基尼指数来选择划分属性</p>
+<p>数据集D的纯度可用基尼值来度量<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104151327634.png" alt="image-20241104151327634" style="zoom: 33%;" /></p>
+<p>Gini反应了从数据集D中随机抽取两个样本其类别标记不一样的概率</p>
+<p>属性a的基尼指数定义为<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241104152734663.png" alt="image-20241104152734663" style="zoom:50%;" /></p>
+<p>选择基尼指数最小的属性</p>
+<h3 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h3>
+	
+	</div>
+  <a type="button" href="/2024/10/23/决策树模型/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2024/10/22/斯坦福吴恩达机器学习2022课程笔记/" >数据集的误差指标与权衡</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-10-22  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<blockquote>
+<p>课程是斯坦福吴恩达2022机器学习</p>
+</blockquote>
+<h3 id="交叉验证集的预测误差指标"><a href="#交叉验证集的预测误差指标" class="headerlink" title="交叉验证集的预测误差指标"></a>交叉验证集的预测误差指标</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022162017194.png" alt="image-20241022162017194" style="zoom: 50%;" />
+
+<ul>
+<li>TP：True Positive预测的分类和实际分类相符且均为正例</li>
+<li>TN：True Negative预测的分类和实际分类相符且均为负例</li>
+<li>FP：False Negative预测的分类和实际分类不符，且预测的是正例</li>
+<li>FN：False Negative预测的分类和实际分类不符，且预测的是负例</li>
+</ul>
+<h3 id="预测精确度的计算："><a href="#预测精确度的计算：" class="headerlink" title="预测精确度的计算："></a>预测精确度的计算：</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022162508083.png" alt="image-20241022162508083"></p>
+<p>对于精确度我们可以理解为，假设在病人预测中，我们用模型预测的有病的个体中，实际真的患病的人占预测有病的人数的多少，也就是我们模型的预测正例正确的样本数占预测为正例的样本数的多少。</p>
+<h3 id="Recall指标："><a href="#Recall指标：" class="headerlink" title="Recall指标："></a>Recall指标：</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022162717945.png" alt="image-20241022162717945"></p>
+<p>recall指标可以理解为在所有确实患病的样本中，我们的模型正确预测出了多少样本，即预测正例且正确的样本数占实际为正例的样本数的多少。</p>
+<h3 id="精确度和recall之间的权衡"><a href="#精确度和recall之间的权衡" class="headerlink" title="精确度和recall之间的权衡"></a>精确度和recall之间的权衡</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022164144857.png" alt="image-20241022164144857"></p>
+<p>假设在病人患病预测中，我们使用罗杰斯蒂回归来预测病人患病的概率，函数返回值大于0.5则预测为正例，若函数返回值小于0.5则预测为负例。但如果患病的话会接受非常痛苦且昂贵的治疗，且患病不治疗的后果并没有那么严重，那么我们可以想要让模型在预测为正例时更加谨慎些，即提高阈值到0.7。</p>
+<p>在提高阈值之后，我们在模型预测为正例的样本中，实际患病的样本数占正例样本更多了，因为我们预测的非常谨慎，那么预测中真的患病的人数也会占更多数，此时我们的精确率会提高。但是相反的，在所有真正患病的样本中，我们预测的患病人数占的比例也少了，recall指标会下降。</p>
+<p>同样，如果假设患病治疗费用和代价很低，但不治疗后果严重，那么我们希望模型在预测患病时没那么严谨，来保证更多的病人被正确预测出疾病，那么就可以降低阈值，此时精确度降低但recall升高。</p>
+<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>如何让模型自动选择合适的权衡？</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022170135926.png" alt="image-20241022170135926"></p>
+<p>在这三个算法中，各有优点很难根据精确度和recall评判哪个是最优的算法，这时就需要F1Score帮助</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241022170421858.png" alt="image-20241022170421858"></p>
+<p>F1Score更高的算法会被选择</p>
+
+	
+	</div>
+  <a type="button" href="/2024/10/22/斯坦福吴恩达机器学习2022课程笔记/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2024/10/18/卷积神经网络进阶/" >卷积神经网络进阶</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-10-18  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>课程是b站刘二大人的课，算是速成吧，基础知识不是很多，专注于应用，中间不懂得可以再补</p>
+<h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018145146213.png" alt="image-20241018145146213"></p>
+<h2 id="Inception-Module"><a href="#Inception-Module" class="headerlink" title="Inception Module"></a>Inception Module</h2><img src="C:\Users\alj\AppData\Roaming\Typora\typora-user-images\image-20241018144916751.png" alt="image-20241018144916751" style="zoom:33%;" />
+
+<p>上图的Inception模型是GoogleNet模型中的小块，红色圈中即为Inception</p>
+<p>Concatenate将每一路径得到的张量拼接成一个张量</p>
+<p><strong>在进行Average Pooling池化时，可以进行相应的padding和stride来保证张量的w和h不会改变</strong></p>
+<h3 id="1-1卷积核的作用是什么？"><a href="#1-1卷积核的作用是什么？" class="headerlink" title="1*1卷积核的作用是什么？"></a>1*1卷积核的作用是什么？</h3><p>在1*1卷积核中，我们可以对不同通道的相同位置的像素值进行计算并加和，有此将CxWxH的张量转化为1xWxH的张量，实现降通道操作，具体图示如下：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241018150809527.png" alt="image-20241018150809527" style="zoom: 25%;" />
+
+<h3 id="为什么需要1-1的卷积核？"><a href="#为什么需要1-1的卷积核？" class="headerlink" title="为什么需要1*1的卷积核？"></a>为什么需要1*1的卷积核？</h3><p>可以对图像数据进行降通道的操作，在卷积运算中显著的减少运算量</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019132722039.png" alt="image-20241019132722039" style="zoom:33%;" />
+
+<p>再上图的卷积运算中，我们将192x28x28的数据卷积成32x28x28的数据，需要进行的运算操作数为<br>$$<br>5^2\times28^2\times192\times32&#x3D;120422400<br>$$<br><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019133516579.png" alt="image-20241019133516579" style="zoom:33%;" /></p>
+<p>如果先对原数据进行1*1的卷积降低通道数，再进行5x5卷积，所需的运算操作数为<br>$$<br>1^2\times28^2\times192\times16+5^2\times28^2\times16\times32&#x3D;12433648<br>$$<br><strong>由此可见运算操作数明显减少</strong></p>
+<h3 id="代码实现及注释"><a href="#代码实现及注释" class="headerlink" title="代码实现及注释"></a>代码实现及注释</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150142932.png" alt="image-20241019150142932"></p>
+<p>池化层对应代码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.branch_pool = torch.nn.Conv2d(in_channels, <span class="number">24</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">branch_pool = F.avg_pool2d(x, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>)</span><br><span class="line">branch_pool = <span class="variable language_">self</span>.branch_pool(branch_pool)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150259362.png" alt="image-20241019150259362"></p>
+<p>1x1卷积层对应代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.branch1x1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line"></span><br><span class="line">branch1x1 = self.branch1x1(x)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019150648224.png" alt="image-20241019150648224"></p>
+<p>5x5卷积层对应代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line"></span><br><span class="line">branch5x5 = self.branch5x5_1(x)</span><br><span class="line">branch5x5 = self.branch5x5_2(branch5x5)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241019151101886.png" alt="image-20241019151101886"></p>
+<p>3x3卷积层对应代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line"></span><br><span class="line">branch3x3 = self.branch3x3_1(x)</span><br><span class="line">branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">branch3x3 = self.branch3x3_3(branch3x3)</span><br></pre></td></tr></table></figure>
+
+<p>最后对每一块得到的卷积张量在通道维度进行合并形成新的张量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></figure>
+
+<p>dim指定在某一维度进行合并张量，包含（batch，通道，宽，高）四个维度</p>
+<p>总体代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class InceptionA(torch.nn.Module):</span><br><span class="line">    def __init__(self, in_channels):</span><br><span class="line">        super(InceptionA, self).__init__()</span><br><span class="line">        # 1x1块</span><br><span class="line">        self.branch1x1 = torch.nn.Conv2d(in_channels, 16, 	kernel_size=1)</span><br><span class="line">        # 5x5块</span><br><span class="line">        self.branch5x5_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch5x5_2 = torch.nn.Conv2d(16, 24, kernel_size=5, padding=2)</span><br><span class="line">        # 3x3块</span><br><span class="line">        self.branch3x3_1 = torch.nn.Conv2d(in_channels, 16, kernel_size=1)</span><br><span class="line">        self.branch3x3_2 = torch.nn.Conv2d(16, 24, kernel_size=3, padding=1)</span><br><span class="line">        self.branch3x3_3 = torch.nn.Conv2d(24, 24, kernel_size=3, padding=1)</span><br><span class="line">        # 池化块</span><br><span class="line">        self.branch_pool = torch.nn.Conv2d(in_channels, 24, kernel_size=1)</span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        branch1x1 = self.branch1x1(x)</span><br><span class="line"></span><br><span class="line">        branch5x5 = self.branch5x5_1(x)</span><br><span class="line">        branch5x5 = self.branch5x5_2(branch5x5)</span><br><span class="line"></span><br><span class="line">        branch3x3 = self.branch3x3_1(x)</span><br><span class="line">        branch3x3 = self.branch3x3_2(branch3x3)</span><br><span class="line">        branch3x3 = self.branch3x3_3(branch3x3)</span><br><span class="line"></span><br><span class="line">        branch_pool = F.avg_pool2d(x, kernel_size=3, stride=1, padding=1)</span><br><span class="line">        branch_pool = self.branch_pool(branch_pool)</span><br><span class="line"></span><br><span class="line">        outputs = [branch1x1, branch3x3, branch5x5, branch_pool]</span><br><span class="line">        return torch.cat(outputs, dim=1)  # 将卷积结果按照通道维度进行拼接</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020154033087.png" alt="image-20241020154033087"></p>
+<h1 id="残差网络Resnet"><a href="#残差网络Resnet" class="headerlink" title="残差网络Resnet"></a>残差网络Resnet</h1><p>随着神经网络层数的不断增加，在反向传播的过程中可能出现梯度爆炸或者梯度消失的情况</p>
+<h3 id="为什么会出现梯度消失或者梯度爆炸？"><a href="#为什么会出现梯度消失或者梯度爆炸？" class="headerlink" title="为什么会出现梯度消失或者梯度爆炸？"></a>为什么会出现梯度消失或者梯度爆炸？</h3><p>现在假设一个模型，其中连接层数为4层，反向传播（Backpropagation）用于计算每一层的权重 WWW 的梯度。这是通过链式法则计算的。假设神经网络的层数从1到4，每一层的输入、权重和激活函数可以定义如下</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020163910140.png" alt="image-20241020163910140" style="zoom: 50%;" />
+
+<p>在计算离输入层较近的层的梯度时，会发现梯度的计算来源于上层的计算总和</p>
+<p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241020184804511.png" alt="image-20241020184804511"></p>
+<p>链式法则是一个连乘的操作，在多次乘积操作后，最后一层的梯度可能趋近于零，也就是梯度消失，但若偏导数值大则会出现梯度爆炸的情况。</p>
+<h3 id="梯度消失-梯度爆炸的解决方法"><a href="#梯度消失-梯度爆炸的解决方法" class="headerlink" title="梯度消失&#x2F;梯度爆炸的解决方法"></a>梯度消失&#x2F;梯度爆炸的解决方法</h3><ol>
+<li><p>梯度剪切：针对于梯度爆炸的情况，将梯度限制在一个限定的阈值内，如果更新梯度时梯度超过了阈值则将梯度改为阈值的边界，防止梯度过大的情况出现。</p>
+</li>
+<li><p>权重正则化：通过对权重做正则化来避免过拟合的情况出现，在梯度爆炸是权重的值可能会非常高，用正则化项来限制权重的大小，防止梯度爆炸的情况发生。</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021141852661.png" alt="image-20241021141852661" style="zoom:50%;" />
+
+<p>其中α为正则化项的系数</p>
+</li>
+<li><p>用Relu代替sigmoid作为激活函数：使用sigmoid函数作为激活函数时梯度值小于等于0.25，在连乘操作后显然会出现梯度消失或梯度爆炸的问题，但如果我们使用Relu函数作为激活函数，在对激活函数求导时，大于0的部分导数是恒等于1的，连乘不会出现梯度消失问题。</p>
+</li>
+<li><p>Batchnorm：通过规范化操作将输出信号x规范化到均值为0，方差为1保证网络的稳定性。</p>
+</li>
+<li><p>残差网络</p>
+</li>
+</ol>
+<h3 id="残差网络如何解决梯度消失问题"><a href="#残差网络如何解决梯度消失问题" class="headerlink" title="残差网络如何解决梯度消失问题?"></a>残差网络如何解决梯度消失问题?</h3><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021145340356.png" alt="image-20241021145340356" style="zoom:50%;" />
+
+<p>在原始的堆叠模型中，我们将需要的底层映射结果设为H(x)，则H(x)&#x3D;F(x)</p>
+<p>但是在残差学习块中，我们假设需要的底层映射结果仍为H(x),在堆叠的非线性层我们让其训练另一个映射：F(x)&#x3D;H(x)-x，则原始的底层映射结果改变为H(x)&#x3D;F(x)+x,那么在上文的反向传播梯度计算中，公式可变为：</p>
+<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021151441848.png" alt="image-20241021151441848" style="zoom:50%;" />
+
+<p>由此可见，连乘的因式有大于一的项，能够有效避免梯度消失问题。</p>
+<p>如果还没有理解可以参考链接：<a target="_blank" rel="noopener" href="http://www.atait.se.ritsumei.ac.jp/AIArc/WangZC/ResNet.pdf">http://www.atait.se.ritsumei.ac.jp/AIArc/WangZC/ResNet.pdf</a></p>
+<h3 id="模型实现及代码复现"><a href="#模型实现及代码复现" class="headerlink" title="模型实现及代码复现"></a>模型实现及代码复现</h3><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20241021160358150.png" alt="image-20241021160358150"></p>
+<p>与原始的堆叠模型不同的是，在堆叠块中添加跳连接</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ResidualBlock</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, channels</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResidualBlock, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.channels = channels</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)  <span class="comment"># padding来保证维度不会改变</span></span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(channels, channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        y = F.relu(<span class="variable language_">self</span>.conv1(x))</span><br><span class="line">        y = <span class="variable language_">self</span>.conv2(y)</span><br><span class="line">        <span class="keyword">return</span> F.relu(x + y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ResNet</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResNet, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = torch.nn.Conv2d(<span class="number">1</span>, <span class="number">16</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = torch.nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        <span class="variable language_">self</span>.mp = torch.nn.MaxPool2d(<span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock1 = ResidualBlock(<span class="number">16</span>)</span><br><span class="line">        <span class="variable language_">self</span>.rblock2 = ResidualBlock(<span class="number">32</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc = torch.nn.Linear(<span class="number">512</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        in_size = x.size(<span class="number">0</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu(<span class="variable language_">self</span>.conv1))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock1(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.mp(F.relu((<span class="variable language_">self</span>.conv2)))</span><br><span class="line">        x = <span class="variable language_">self</span>.rblock2(x)</span><br><span class="line">        x = x.view(in_size, -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.fc(x)</span><br></pre></td></tr></table></figure>
+
+
+	
+	</div>
+  <a type="button" href="/2024/10/18/卷积神经网络进阶/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2024/10/17/hello-world/" >Hello World</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-10-17  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+	
+	</div>
+  <a type="button" href="/2024/10/17/hello-world/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+
+   
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
   </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/11/04/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" >
-      
-        算法每日一题
-      
-    </a>
-  </div>
+
+
+		
+			
+		
+			
+	<div class="widget">
+		<h4>标签云</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/神经网络/">神经网络<span>1</span></a></li>
+		
+			<li><a href="/tags/算法/">算法<span>1</span></a></li>
+		
+			<li><a href="/tags/机器学习/">机器学习<span>3</span></a></li>
+		
+			<li><a href="/tags/操作系统/">操作系统<span>1</span></a></li>
+		
+			<li><a href="/tags/ML/">ML<span>1</span></a></li>
+		
+			<li><a href="/tags/cv/">cv<span>1</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2025/05/22/MoCo/" ><i class="fa fa-file-o"></i>MoCo</a>
+      </li>
+    
+      <li>
+        <a href="/2025/05/22/SegNeXt/" ><i class="fa fa-file-o"></i>SegNeXt:Rethinking Convolut...</a>
+      </li>
+    
+      <li>
+        <a href="/2025/01/22/操作系统学习历程/" ><i class="fa fa-file-o"></i>操作系统学习历程</a>
+      </li>
+    
+      <li>
+        <a href="/2024/11/04/算法笔记/" ><i class="fa fa-file-o"></i>算法每日一题</a>
+      </li>
+    
+      <li>
+        <a href="/2024/10/23/AdvancedMachineLearning结课报告专用/" ><i class="fa fa-file-o"></i>AdvancedMachineLearning结课报告专用</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/hexo-theme-freemind" title="Freemind's Github repository." target="_blank">Freemind</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/kristopolous/BOOTSTRA.386" title="BOOTSTRA.386's Github repository." target="_blank">BOOTSTRA.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/blackshow/hexo-theme-freemind.386" title="Freemind.386's Github repository." target="_blank">Freemind.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/blackshow" title="My Github account." target="_blank">My Github</a></li>
+	
+	</ul>
 </div>
 
 
-<h4> <a href="/archives">All Posts</a></h4>
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
 
-        </div>
-        <div class="row mt-2">
-  <h3>Search</h3>
-  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
-  <div style="margin-top: 1.5rem;">
-    <ul id="result"></ul>
+	
+	
+</div> <!-- row-fluid -->
+	</div>
   </div>
-</div>
-        <div class="row mt-2">
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 Simon An
   
-    <div class="eight columns">
-      <p id="madewith">Made with ❤ and
-        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
-        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
-        </a>
-        
-        at <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
-        
-    </div>
-
-    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
-    <div class="four columns mb-3 posisi" >
-      
-      <a class="ml-0 footer-link icon" href="https://github.com/lovelysimon" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
-        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-      </a>
-      
-
-      
-
-      
-
-      
-      <a class="ml-0 footer-link icon" href="https://instagram.com/s1m0nl0" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
-        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
-      </a>
-      
-
-      
-      <a class="ml-0 footer-link icon" href="https://stackoverflow.com/story/jay-an" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="StackOverflow">
-        <svg class="stackoverflow svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Stack Overflow</title><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg>
-      </a>
-      
-
-    </div>
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
   
-</div>
 
-      </div>
 
-    </div>
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
 
-  </div>
-  <script src="/js/nanobar.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
 
-  <script>
-    var options = {
-      classname: 'nanobar',
-      id: 'myNanobar'
-    };
-    var nanobar = new Nanobar(options);
-    nanobar.go(30);
-    nanobar.go(76);
-    nanobar.go(100);
-  </script>
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
 
 </body>
-
-</html>
+   </html>
