@@ -23,6 +23,25 @@
     
     
     <entry>
+      <title>SegNeXt:Rethinking Convolutional Attention Design for Semantic Segmentation</title>
+      <link href="/2025/05/22/SegNeXt/"/>
+      <url>/2025/05/22/SegNeXt/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SegNeXt-Rethinking-Convolutional-Attention-Design-for-Semantic-Segmentation"><a href="#SegNeXt-Rethinking-Convolutional-Attention-Design-for-Semantic-Segmentation" class="headerlink" title="SegNeXt: Rethinking Convolutional Attention Design for Semantic Segmentation"></a>SegNeXt: Rethinking Convolutional Attention Design for Semantic Segmentation</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>We present SegNeXt, a simple convolutional network architecture for semantic segmentation. Recent transformer-based models have dominated the field of semantic segmentation due to the efficiency of self-attention in encoding spatial information. In this paper, we show that convolutional attention is a more efficient and effective way to encode contextual information than the self-attention mechanism in transformers. By re-examining the characteristics owned by successful segmentation models, we discover several key components leading to the performance improvement of segmentation models. This motivates us to design a novel convolutional attention network that uses cheap convolutional operations. Without bells and whistles, our SegNeXt significantly improves the performance of previous state-of-the-art methods on popular benchmarks, including ADE20K, Cityscapes, COCO-Stuff, Pascal VOC, Pascal Context, and iSAID. Notably, SegNeXt outperforms EfficientNet-L2 w&#x2F; NAS-FPN and achieves 90.6% mIoU on the Pascal VOC 2012 test leaderboard using only 1&#x2F;10 parameters of it. On average, SegNeXt achieves about 2.0% mIoU improvements compared to the state-of-the-art methods on the ADE20K datasets with the same or fewer computations. Code is available.</p><h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="卷积encoder"><a href="#卷积encoder" class="headerlink" title="卷积encoder"></a>卷积encoder</h3><p>使用MSCA来替代原本的注意力机制encoder，主要分为三个部分：</p><ul><li>深度卷积来提取局部信息</li><li>多分支深度卷积来捕获多尺度上下文</li><li>1X1卷积来建模不同通道的关系</li></ul><p>1x1卷积的输出被当作注意力权重来直接和输入相乘<br><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250409164933938.png" alt="image-20250409164933938"></p><p>Att和模型的输入进行元素级别的相乘</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250409170139279.png" alt="image-20250409170139279"></p><p>将一系列的块进行堆叠就形成了论文提出的卷积编码器MSCAN</p><p>采用等级制度结构，包含了四个递减的空间分辨率，H&#x2F;4 × W&#x2F;4 , H&#x2F;8 × W&#x2F;8 , H&#x2F;16 × W&#x2F;16 和 H&#x2F;32 × W&#x2F;32</p><p>每个阶段都包含了一个下采样模块</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250409171938063.png" alt="image-20250409171938063"></p><h3 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h3><p>三种解码器可以选择：</p><ul><li>segformer 解码器，纯MLP</li><li>直接输入到解码头</li><li>从最后三个阶段聚合特征，并使用轻量级Hamburger[21]进一步建模全局上下文。结合我们强大的卷积编码器，我们发现使用轻量级解码器可以提高性能计算效率。这也是论文所采用的解码器模式</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> cv </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统学习历程</title>
       <link href="/2025/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/"/>
       <url>/2025/01/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E5%8E%86%E7%A8%8B/</url>
