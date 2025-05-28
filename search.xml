@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>pfnet</title>
+      <link href="/2025/05/28/pfnet/"/>
+      <url>/2025/05/28/pfnet/</url>
+      
+        <content type="html"><![CDATA[<h1 id="PFNet"><a href="#PFNet" class="headerlink" title="PFNet"></a>PFNet</h1><p>伪装目标分割</p><p>定位与聚焦网络，由两个关键模块组成，定位模块PM和聚焦模块FM</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250320165149152.png" alt="image-20250320165149152"></p><ul><li><p>给定一张 RGB 图像，我们首先将其输入到 ResNet - 50 [18] 骨干网络中，以提取多级特征</p></li><li><p>这些特征会进一步输入到四个卷积层进行通道数缩减。</p></li><li><p>将定位模块（PM）应用于最高层级的特征，以定位潜在的目标物体。</p></li><li><p>利用多个聚焦模块（FM）逐步发现并去除误报和漏报的干扰因素，从而准确识别伪装物体。</p></li></ul><h2 id="PM：通道注意力模块和空间注意力模块"><a href="#PM：通道注意力模块和空间注意力模块" class="headerlink" title="PM：通道注意力模块和空间注意力模块"></a>PM：通道注意力模块和空间注意力模块</h2><h3 id="通道注意力计算"><a href="#通道注意力计算" class="headerlink" title="通道注意力计算"></a>通道注意力计算</h3><p>输入特征<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250320171350675.png" alt="image-20250320171350675"></p><p>首先根据chw的矩阵计算QKV，维度为CxN，N&#x3D;HxW</p><p>接下来计算通道注意力图X，对Q和K的转置进行矩阵乘法，然后通过softmax层得到通道注意力图X</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250320170105947.png" alt="image-20250320170105947"></p><p>Q<em>i :表示矩阵</em>Q<em>的第</em>i<em>行 ，x</em>ij<em>衡量的是第</em>j<em>个通道对第</em>i<em>个通道的影响程度。通过这个公式，可以得到一个</em>C<em>×</em>C<em>的通道注意力图</em>X<em>，其中每个元素</em>x*<em>ij</em>表示不同通道之间的关联程度</p><p>在得到通道注意力图X后，会让X和V进行矩阵乘法，根据计算出的通道注意力，对V进行加权求和</p><p>最后，为了增强容错能力，我们将结果乘以一个可学习的尺度参数 γ，并进行恒等映射操作，以获得最终输出<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250320171308082.png" alt="image-20250320171308082"></p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250320171256239.png" alt="image-20250320171256239"></p><p>其中，γ 从初始值 1 开始逐渐学习权重。最终的特征<em>F</em>′对特征图通道之间的长距离语义依赖进行了建模，因此比输入特征<em>F</em>更具判别力。</p><h3 id="空间注意力计算"><a href="#空间注意力计算" class="headerlink" title="空间注意力计算"></a>空间注意力计算</h3><p>对输入F&#96;使用1x1的卷积降低通道，使用三个全新的特征图Q,K,V<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321102001587.png" alt="image-20250321102001587" style="zoom: 80%;" /></p><p>继续进行矩阵乘法运算，并使用softmax归一化来生成空间注意力图</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321102209400.png" alt="image-20250321102209400"></p><p>与通道注意力模块类似，将结果乘以一个可学习的尺度参数γ，添加一个跳跃链接，获得最终的输出</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321103114428.png" alt="image-20250321103114428"></p><h2 id="FM：聚焦模块设计"><a href="#FM：聚焦模块设计" class="headerlink" title="FM：聚焦模块设计"></a>FM：聚焦模块设计</h2><p>​由于伪装物体通常与背景外观相似，在初始分割中自然会出现误报和漏报的预测结果。聚焦模块（FM）旨在先发现然后消除这些错误预测。它将骨干网络提取的当前层级特征以及更高层级的预测和特征作为输入，输出优化后的特征和更准确的预测结果</p><p>比较模糊区域与确定区域</p><p>​对更高级的模块预测进行上采样，通过sigmoid进行归一化处理，使用该映射及其反向版本分别对当前层级的特征相乘，生成前景注意力特征和背景注意力特征，将这两种类型的特征分别输入到两个并行的上下文探索模块中进行上下文推理</p><p>ce模块设计如下：</p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250321132323266.png" alt="image-20250321132323266" style="zoom:50%;" /><p>​有四个上下文探索分支组成，每个分支都包含一个用于通道缩减的3x3卷积层，一个用于局部特征提取的kxk卷积层，分别设置为1，3，5，7，以及一个扩张率为3x3的扩张卷积层（空洞卷积）用于感知上下文信息。</p><p>在发现干扰后，通过以下方式进行消除：</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321133500891.png" alt="image-20250321133500891"></p><p>其中Fh是来自输入的高级特征，Fr’是来自输出的优化特征，CBR是卷积，归一化，和ReLu的组合，U是双线性上采样，α和β是可学习的缩放参数，通过逐元素减法操作来抑制模糊的背景，并使用逐元素的加法操作来增强缺失的前景</p><h2 id="Loss函数设计"><a href="#Loss函数设计" class="headerlink" title="Loss函数设计"></a>Loss函数设计</h2><p>PFNet有四个输出预测结果 ，一个来自定位模块（PM），三个来自聚焦模块（FM），对于定位模块，在其输出上施加二元交叉熵损失函数bce和交并比损失Liou，得到公式<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321134529089.png" alt="image-20250321134529089">对于聚焦模块，结合了加权二元交叉熵函数和加权交并比损失函数<img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321134631425.png" alt="image-20250321134631425">促使聚焦模块更加关注可能存在的干扰区域</p><p>最后总体的Loss函数为：</p><p><img src="https://simonpic-1330571413.cos.ap-nanjing.myqcloud.com/picblog/image-20250321134714834.png" alt="image-20250321134714834"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> ML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>InternImage:Exploring Large-Scale Vision Foundation Models with Deformable Convolutions</title>
       <link href="/2025/05/25/InternImage/"/>
       <url>/2025/05/25/InternImage/</url>
